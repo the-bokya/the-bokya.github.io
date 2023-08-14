@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Lobster+Two:wght@700&family=Playfair+Display:ital,wght@0,900;1,900&family=Roboto+Slab:wght@600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Lobster&family=Lobster+Two:wght@700&family=Playfair+Display:ital,wght@0,900;1,900&family=Roboto+Slab:wght@600&display=swap");
 html,
 body {
   margin: 0;
@@ -25,11 +25,12 @@ body {
   flex-shrink: 1;
   justify-content: center;
   align-items: center;
-flex-basis: 10rem;
+  flex-basis: 10rem;
 }
 .logo {
   text-decoration: none;
   font-size: 1.5em;
+  transition: 0.2s bezier(0.46, 0.05, 0.08, 1.48);
 }
 a:visited,
 a:active,
@@ -65,7 +66,7 @@ a:link {
 #two {
   height: 0.15rem;
   width: 1rem;
-  background-color: #ffffff;
+  background-color: var(--nav-items);
   display: block;
   border-radius: 4rem;
   position: absolute;
@@ -101,7 +102,6 @@ nav {
   text-align: center;
   z-index: 20;
   border-radius: 0 0 10rem 10rem;
-  transition: 1s ease;
   font-size: 1em;
 }
 
@@ -160,7 +160,8 @@ main {
     rgba(255, 169, 23, 0.75) 67%
   );
 }
-#follower, #follower2 {
+#follower,
+#follower2 {
   filter: blur(50px);
   border-radius: 10rem;
   display: block;
@@ -175,6 +176,7 @@ main {
   top: 200%;
   left: -50%;
   z-index: 0;
+  transition: opacity 0.25s ease;
 }
 @keyframes rotate-cursor {
   0% {
@@ -202,7 +204,7 @@ main h3 {
   text-align: center;
   color: rgb(171, 67, 67);
   font-family: "Playfair Display", serif;
-  font-size: 2.5rem;
+  font-size: 2rem;
   text-shadow: 0 0 5px black;
   margin: 3rem 0;
 }
@@ -215,32 +217,32 @@ main {
 }
 
 @media (min-width: 768px) {
-nav {
-  position: relative;
-  top: 0;
-  left: 0;
-  opacity: 1;
-  height: 20vh;
-  flex-flow: row;
-  padding: 0rem 2rem;
-  backdrop-filter: blur(0);
-  background-color: rgb(0, 0, 0, 0);
-  font-size: 0.7em;
-  align-items: center;
-}
-nav > ul {
-  flex-flow: row;
-  justify-content: flex-end;
-  align-items: center;
-  font-size: 1.5em;
-}
-.top {
-  height: 100%;
-  align-items: flex-start;
-}
-.hamburger {
-  display: none;
-}
+  nav {
+    position: relative;
+    top: 0;
+    left: 0;
+    opacity: 1;
+    height: 20vh;
+    flex-flow: row;
+    padding: 0rem 2rem;
+    backdrop-filter: blur(0);
+    background-color: rgb(0, 0, 0, 0);
+    font-size: 0.7em;
+    align-items: center;
+  }
+  nav > ul {
+    flex-flow: row;
+    justify-content: flex-end;
+    align-items: center;
+    font-size: 1.5em;
+  }
+  .top {
+    height: 100%;
+    align-items: flex-start;
+  }
+  .hamburger {
+    display: none;
+  }
 }
 a.icon-holder {
   display: flex;

@@ -1,15 +1,20 @@
 {% extends "base.html" %}
+
 {% block title %}
 Ek Hota Bokya | There Once Was a Cat
 {% endblock title %}
-{% block content %}
 
+{% block head %}
+<link rel="stylesheet" href="/cards.css" />
+{% endblock head %}
+
+{% block content %}
 <h1>{{ section.title }}</h1>
-<ul>
+<div class="cards">
   {% for page in section.pages %}
-  <li>
-    <a href="{{ page.permalink | safe }}">{{ page.title }}</a>
-  </li>
+  <div class="card">
+    <a href="{{ page.permalink | safe }}"> {{ page.title }} </a>
+  </div>
   {% endfor %}
-</ul>
+</div>
 {% endblock content %}
