@@ -1,0 +1,22 @@
+.cards {
+ display: flex; 
+ flex-flow: row wrap;
+ justify-content: center;
+ align-items: center;
+  gap: 3rem 1rem;
+}
+ .card {
+  display: block;
+  height: 300px;
+  width: 200px;
+  background-color: rgb(147, 36, 36);
+  border-radius: 1rem;
+  padding: 1rem;
+  transition: none;
+  perspective: 100rem;
+  transform-style: preserve-3d;
+  transition: 0.5s ease;
+ }
+ .card:hover {
+  box-shadow: 0 0 3rem black;
+ }

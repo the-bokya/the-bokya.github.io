@@ -12,9 +12,41 @@ Ek Hota Bokya | There Once Was a Cat
 <h1>{{ section.title }}</h1>
 <div class="cards">
   {% for page in section.pages %}
-  <div class="card">
-    <a href="{{ page.permalink | safe }}"> {{ page.title }} </a>
-  </div>
+    <a href="{{ page.permalink | safe }}" class="card">
+      <span class="card-title">{{ page.title }}</span>
+    <hr>
+    <div>
+      <span class="card-desc">{{ page.description | safe }}</span>
+    </div>
+  </a>
   {% endfor %}
 </div>
+<script>
+  const cards = document.getElementsByClassName("card");
+  for (let card of cards){
+    card.addEventListener("mousemove", (event) => {
+      cardMove(event, card)
+    });
+    card.addEventListener ("mouseleave", (event) => {
+
+    card.animate({
+      transform: `perspective(4cm) rotateX(0deg) rotateY(0deg)`,
+    }, {duration: 3000, fill: "forwards"})
+    });
+  }
+   
+  const cardMove = (e, card) => {
+    const {x, y, width, height} = card.getBoundingClientRect();
+    const mouse_x = e.clientX;
+    const mouse_y = e.clientY;
+    const x_center = x + width/2;
+    const y_center = y + height/2;
+    const x_pos =  (mouse_x - x_center)/width;
+    const y_pos =  (mouse_y - y_center)/height;
+    console.log(x_pos, y_pos)
+    card.animate({
+      transform: `perspective(4cm) rotateX(${-y_pos*10}deg) rotateY(${x_pos*10}deg)`,
+    }, {duration: 3000, fill: "forwards"})
+  }
+</script>
 {% endblock content %}
