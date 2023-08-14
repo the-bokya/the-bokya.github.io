@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %} {% endblock %}</title>
+  <link href="/style.css" rel="stylesheet" />
+</head>
+<body>
+  <div class="hamburger" id="hamburger" onclick="menu()">
+  <div id="one"></div>
+  <div id="two"></div>
+  </div>
+  </div>
+  <nav id="navbar">
+    <div class="top">
+      <a class="logo" href="/">
+        <span>the-bokya</span>
+      <div id="line"></div>
+      </a>
+    </div>
+    <ul>
+      <li>
+        <a href="/blog">Blog</a>
+      </li>
+      <li>
+        <a href="https:www.github.com/the-bokya" class="icon-holder">
+          <img src="/github.svg" class="icon" />
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <section>
+    <div id="follow-container">
+      <div id="follower"></div>
+      <div id="follower2"></div>
+      </div>
+    <main>
+      <div id="content">
+      {% block content %} {% endblock %}
+      </div>
+    </main>
+  </section>
+  <script>
+    const menu = () => {
+      const bar = document.getElementById("navbar");
+      const hamburger = document.getElementById("hamburger");
+      const one = document.getElementById("one");
+      const two = document.getElementById("two");
+      bar.classList.toggle("menu-down");
+      one.classList.toggle("one-down");
+      two.classList.toggle("two-down");
+    }
+    
+
+
+    const follower = document.getElementById("follow-container");
+    const bg = (e) => {
+      let x = e.clientX;
+      let y = e.clientY;
+      follower.animate({
+      left: x+"px",
+      top: y+"px",
+      }, {duration: 3000, fill: "forwards"});
+    };
+    document.body.onpointermove = event => bg(event);
+    document.body.onpointerenter = () => (follower.style.opacity = "30%");
+    document.body.onpointerleave = () => (follower.style.opacity = "0%");
+  </script>
+</body>
+</html>
