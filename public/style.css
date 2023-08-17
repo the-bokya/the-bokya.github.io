@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Lobster&family=Lobster+Two:wght@700&family=Playfair+Display:ital,wght@0,900;1,900&family=Roboto+Slab:wght@600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lobster&family=Lobster+Two:wght@300;700&family=Playfair+Display:ital,wght@0,900;1,900&family=Roboto+Slab:wght@300;500&family=Sacramento&display=swap");
 html,
 body {
   margin: 0;
@@ -61,6 +61,9 @@ a:link {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.hamburger:hover > * {
+  box-shadow: 0 0 5px black;
 }
 #one,
 #two {
@@ -207,13 +210,13 @@ main h3 {
   text-shadow: 0 0 5px black;
   margin: 3rem 0;
 }
-h1 {
+main h1 {
   font-size: 2rem;
 }
-h2 {
+main h2 {
   font-size: 1.6rem;
 }
-h3 {
+main h3 {
   font-size: 1.2rem;
 }
 main {
@@ -222,8 +225,23 @@ main {
   word-wrap: break-word;
   font-size: 0.8rem;
   color: var(--base-text);
+  text-shadow: 0 0 3px black;
+  font-weight: 300;
 }
+main strong {
+  font-weight: 500;
+}
+main a[href] {
+  text-decoration: underline;
+}
+main a:link, main a:visited {
+  font-weight: 500;
 
+}
+main a:hover {
+  color: rgb(26, 141, 183);
+  text-shadow: 0 0 2px rgb(33, 33, 33);
+}
 @media (min-width: 768px) {
   nav {
     position: relative;
