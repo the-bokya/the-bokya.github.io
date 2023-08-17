@@ -1,0 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100&display=swap');
+.date {
+  font-family: 'JetBrains Mono', monospace;
+  text-align: left;
+  margin: 0;
+  font-size: 0.8em;
+}

@@ -204,9 +204,17 @@ main h3 {
   text-align: center;
   color: rgb(171, 67, 67);
   font-family: "Playfair Display", serif;
-  font-size: 2rem;
   text-shadow: 0 0 5px black;
   margin: 3rem 0;
+}
+h1 {
+  font-size: 2rem;
+}
+h2 {
+  font-size: 1.6rem;
+}
+h3 {
+  font-size: 1.2rem;
 }
 main {
   font-family: "Roboto Slab", serif;
