@@ -11,8 +11,20 @@
 {% block content %}
 
 <h1>{{ page.title }}</h1>
-<h3 class="date">Date: {{ page.date | date(format='%d-%m-%Y') }}</h3>
+<h3 class="date"><strong>Date:</strong> {{ page.date | date(format='%A, %d %b %Y') }}</h3>
 <p>
 {{ page.content | safe }}
 </p>
+<script>
+  const imgs = document.querySelectorAll("main img");
+  for (let img of imgs){
+    const title = img.getAttribute("title");
+    if (title) {
+      const caption = document.createElement("p");
+      caption.classList.add("caption");
+      caption.innerHTML = title;
+      img.after(caption);
+    }
+  }
+</script>
 {% endblock content %}
