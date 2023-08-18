@@ -9,15 +9,12 @@
 
 
 /* Look look what I have to go through cuz Firefox doesn't yet support :has */
-img {
+p img {
   width: 33.33%;
   margin: auto;
   display: block;
   border-radius: 0.4em;
   box-shadow: 0 0 2em black;
-}
-img::after {
-  content: attr(title);
 }
 p {
   display: block;
