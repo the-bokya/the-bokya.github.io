@@ -8,9 +8,10 @@ body {
   overflow-x: hidden;
 }
 :root {
-  --base-text: #928374;
+  --heading: #fb4934;
+  --base-text: #8ec07c;
   --logo-text: #d9d9d9;
-  --nav-items: #096c50;
+  --nav-items: #ebdbb2;
   --bg-color: #282828;
 }
 * {
@@ -206,7 +207,7 @@ main h1,
 main h2,
 main h3 {
   text-align: center;
-  color: rgb(171, 67, 67);
+  color: var(--heading);
   font-family: "Playfair Display", serif;
   text-shadow: 0 0 5px black;
   margin: 3rem 0;
