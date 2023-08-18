@@ -6,10 +6,10 @@
 <div class="cards">
   {% for page in section.pages %}
   <a href="{{ page.permalink | safe }}" class="card">
-    <span class="card-title">{{ page.title }}</span>
+    <p class="card-title">{{ page.title }}</p>
     <hr />
     <div>
-      <span class="card-desc">{{ page.description | safe }}</span>
+      <p class="card-desc">{{ page.description | safe }}</p>
     </div>
   </a>
   {% endfor %}
