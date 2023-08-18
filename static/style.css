@@ -232,14 +232,14 @@ main {
 main strong {
   font-weight: 500;
 }
-main a[href] {
+main p a[href] {
   text-decoration: underline;
 }
 main a:link, main a:visited {
   font-weight: 500;
 
 }
-main a:hover {
+main p a:hover {
   color: rgb(26, 141, 183);
   text-shadow: 0 0 2px rgb(33, 33, 33);
 }
