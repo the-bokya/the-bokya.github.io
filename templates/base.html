@@ -62,22 +62,28 @@
       if (touch) {
         x = e.changedTouches[0].clientX;
         y = e.changedTouches[0].clientY;
-        follower.style.left = x+"px";
-        follower.style.top = y+"px";
       }
       else {
         x = e.clientX;
         y = e.clientY;
+      }
         follower.animate({
         left: x+"px",
         top: y+"px",
         }, {duration: d, fill: "forwards"});
-    }
+    };
+    const touchStart = (e) => {
+      follower.style.opacity = "30%";
+      let x = e.targetTouches[0].clientX;
+      let y = e.targetTouches[0].clientY;
+      follower.style.top = y + "px";
+      follower.style.left = x + "px";
+      console.log("meow");
     };
     if ("ontouchstart" in window) {
-      document.body.ontouchstart = () => (follower.style.opacity = "30%");
+      document.body.ontouchstart = event => touchStart(event);
       document.body.ontouchend = () => (follower.style.opacity = "0%");
-      document.body.ontouchmove = event => bg(event, 3000, true);
+      document.body.ontouchmove = event => bg(event, 400, true);
     }
     else {
     document.body.onpointermove = event => bg(event, 3000, false);
