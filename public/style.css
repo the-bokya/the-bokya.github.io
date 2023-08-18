@@ -4,16 +4,17 @@ body {
   margin: 0;
   height: 100%;
   font-size: 1.3rem;
-  background-color: rgb(32, 32, 32);
+  background-color: var(--bg-color);
   overflow-x: hidden;
 }
 :root {
-  --base-text: rgb(16, 120, 78);
+  --base-text: #928374;
   --logo-text: #d9d9d9;
   --nav-items: #096c50;
+  --bg-color: #282828;
 }
 * {
-  transition: 0.5s ease;
+  transition: 0.125s ease;
   box-sizing: border-box;
 }
 .top {
@@ -243,6 +244,9 @@ main a:hover {
   text-shadow: 0 0 2px rgb(33, 33, 33);
 }
 @media (min-width: 768px) {
+  *, *::before, *::after {
+    transition: 0.5s ease;
+  }
   nav {
     position: relative;
     top: 0;

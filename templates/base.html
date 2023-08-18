@@ -57,17 +57,33 @@
 
 
     const follower = document.getElementById("follow-container");
-    const bg = (e) => {
-      let x = e.clientX;
-      let y = e.clientY;
-      follower.animate({
-      left: x+"px",
-      top: y+"px",
-      }, {duration: 3000, fill: "forwards"});
+    const bg = (e, d, touch) => {
+      let x, y;
+      if (touch) {
+        x = e.changedTouches[0].clientX;
+        y = e.changedTouches[0].clientY;
+        follower.style.left = x+"px";
+        follower.style.top = y+"px";
+      }
+      else {
+        x = e.clientX;
+        y = e.clientY;
+        follower.animate({
+        left: x+"px",
+        top: y+"px",
+        }, {duration: d, fill: "forwards"});
+    }
     };
-    document.body.onpointermove = event => bg(event);
+    if ("ontouchstart" in window) {
+      document.body.ontouchstart = () => (follower.style.opacity = "30%");
+      document.body.ontouchend = () => (follower.style.opacity = "0%");
+      document.body.ontouchmove = event => bg(event, 3000, true);
+    }
+    else {
+    document.body.onpointermove = event => bg(event, 3000, false);
     document.body.onpointerenter = () => (follower.style.opacity = "30%");
     document.body.onpointerleave = () => (follower.style.opacity = "0%");
+    }
   </script>
 </body>
 </html>

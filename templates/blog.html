@@ -1,20 +1,13 @@
-{% extends "base.html" %}
-
-{% block title %}
-Bokya's Blogs
-{% endblock title %}
-
+{% extends "base.html" %} {% block title %} Bokya's Blogs {% endblock title %}
 {% block head %}
 <link rel="stylesheet" href="/cards.css" />
-{% endblock head %}
-
-{% block content %}
+{% endblock head %} {% block content %}
 <h1>{{ section.title }}</h1>
 <div class="cards">
   {% for page in section.pages %}
-    <a href="{{ page.permalink | safe }}" class="card">
-      <span class="card-title">{{ page.title }}</span>
-    <hr>
+  <a href="{{ page.permalink | safe }}" class="card">
+    <span class="card-title">{{ page.title }}</span>
+    <hr />
     <div>
       <span class="card-desc">{{ page.description | safe }}</span>
     </div>
@@ -22,31 +15,61 @@ Bokya's Blogs
   {% endfor %}
 </div>
 <script>
+  let touch = "ontouchstart" in window;
   const cards = document.getElementsByClassName("card");
-  for (let card of cards){
-    card.addEventListener("mousemove", (event) => {
-      cardMove(event, card)
-    });
-    card.addEventListener ("mouseleave", (event) => {
+  for (let card of cards) {
+    if (touch) {
+      card.addEventListener("touchstart", (event) => {
+        cardMove(event, card, true);
+      });
+      card.addEventListener("touchend", (event) => {
+        card.animate(
+          {
+            transform: `perspective(4cm) rotateX(0deg) rotateY(0deg)`,
+          },
+          { duration: 100, fill: "forwards" }
+        );
+      });
+    } else {
+      card.addEventListener("mousemove", (event) => {
+        cardMove(event, card, false);
+      });
+      card.addEventListener("mouseleave", (event) => {
+        card.animate(
+          {
+            transform: `perspective(4cm) rotateX(0deg) rotateY(0deg)`,
+          },
+          { duration: 2000, fill: "forwards" }
+        );
+      });
+    }
+  }
 
-    card.animate({
-      transform: `perspective(4cm) rotateX(0deg) rotateY(0deg)`,
-    }, {duration: 3000, fill: "forwards"})
-    });
-  }
-   
-  const cardMove = (e, card) => {
-    const {x, y, width, height} = card.getBoundingClientRect();
-    const mouse_x = e.clientX;
-    const mouse_y = e.clientY;
-    const x_center = x + width/2;
-    const y_center = y + height/2;
-    const x_pos =  (mouse_x - x_center)/width;
-    const y_pos =  (mouse_y - y_center)/height;
-    console.log(x_pos, y_pos)
-    card.animate({
-      transform: `perspective(4cm) rotateX(${-y_pos*10}deg) rotateY(${x_pos*10}deg)`,
-    }, {duration: 3000, fill: "forwards"})
-  }
+  const cardMove = (e, card, touch) => {
+    const { x, y, width, height } = card.getBoundingClientRect();
+    let d;
+    if (touch) {
+      mouse_x = e.changedTouches[0].clientX;
+      mouse_y = e.changedTouches[0].clientY;
+      d = 50;
+      console.log(mouse_x, mouse_y, d);
+    } else {
+      mouse_x = e.clientX;
+      mouse_y = e.clientY;
+      d = 2000;
+    }
+    const x_center = x + width / 2;
+    const y_center = y + height / 2;
+    const x_pos = (mouse_x - x_center) / width;
+    const y_pos = (mouse_y - y_center) / height;
+    console.log(x_pos, y_pos);
+
+    card.animate(
+      {
+        transform: `perspective(4cm) rotateX(${-y_pos * 10}deg) rotateY(${x_pos * 10}deg)`,
+      },
+      { duration: d, fill: "forwards" }
+    );
+  };
 </script>
 {% endblock content %}
