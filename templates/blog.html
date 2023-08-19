@@ -19,6 +19,9 @@
   const cards = document.getElementsByClassName("card");
   for (let card of cards) {
     if (touch) {
+      card.addEventListener("touchstart", (event) => {
+        cardMove(event, card, true);
+      });
       card.addEventListener("touchmove", (event) => {
         cardMove(event, card, true);
       });
