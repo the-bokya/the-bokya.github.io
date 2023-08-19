@@ -1,0 +1,40 @@
+.cards {
+ display: flex; 
+ flex-flow: row wrap;
+ justify-content: center;
+ align-items: center;
+  gap: 3rem 1rem;
+}
+ .card {
+  display: block;
+  height: 180px;
+  width: 240px;
+  background-color: #d79921;
+  border-radius: 1rem;
+  padding: 1rem;
+  transition: none;
+  perspective: 100rem;
+  transform-style: preserve-3d;
+  transition: 0.5s ease;
+ }
+ .card p {
+  color: #504945;
+  text-shadow: none;
+  font-weight: 300;
+  text-align: center;
+ }
+ .card .card-title {
+  text-align: center;
+  width: 100%;
+  font-weight: 500;
+  font-size: 1.2em;
+ }
+ .card:hover {
+  box-shadow: 0 0 3rem black;
+ }
+ .card hr {
+  margin: 1em auto;
+  width: 75%;
+  border: none;
+  border-top: 0.2em dotted #928374;
+ }
