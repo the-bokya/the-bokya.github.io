@@ -133,7 +133,7 @@ section {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: min(100%);
+  min-height: 100%;
   height: max-content;
   width: 100%;
 }
