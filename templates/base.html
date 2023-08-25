@@ -47,6 +47,10 @@
       </div>
     </main>
   </section>
+  <footer>
+    <div id="footer-line"></div>
+   <p class="bottom">You've reached the bottom! Click to go to the top.</p>
+  </footer>
   <script>
     const menu = () => {
       const bar = document.getElementById("navbar");
@@ -94,6 +98,10 @@
     document.body.onpointerenter = () => (follower.style.opacity = "30%");
     document.body.onpointerleave = () => (follower.style.opacity = "0%");
     }
+    footer = document.querySelector(".bottom");
+    footer.addEventListener("click", () => {
+      document.body.scrollTo({top: 0, left: 0, behavior:"smooth"});
+    })
   </script>
 </body>
 </html>
