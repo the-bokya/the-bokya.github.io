@@ -18,6 +18,11 @@ body {
   transition: 0.125s ease;
   box-sizing: border-box;
 }
+*::selection {
+  background-color: #ff00ae6c;
+  backdrop-filter: blur(20px);
+  text-shadow: 0 0 2px black;
+}
 .top {
   font-family: "Lobster Two", cursive;
   color: var(--logo-text);
