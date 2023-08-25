@@ -312,3 +312,6 @@ footer {
   top: 0;
   border-radius: 10rem;
 }
+footer:hover #footer-line {
+  width: 30%;
+}
