@@ -55,7 +55,6 @@
       mouse_x = e.changedTouches[0].clientX;
       mouse_y = e.changedTouches[0].clientY;
       d = 50;
-      console.log(mouse_x, mouse_y, d);
     } else {
       mouse_x = e.clientX;
       mouse_y = e.clientY;
@@ -65,7 +64,6 @@
     const y_center = y + height / 2;
     const x_pos = (mouse_x - x_center) / width;
     const y_pos = (mouse_y - y_center) / height;
-    console.log(x_pos, y_pos);
 
     card.animate(
       {
