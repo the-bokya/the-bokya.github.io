@@ -13,6 +13,8 @@ body {
   --logo-text: #d9d9d9;
   --nav-items: #8ec07c;
   --bg-color: #282828;
+  --nav-height: 20vh;
+  --footer-height: 20vh;
 }
 * {
   transition: 0.125s ease;
@@ -134,20 +136,21 @@ nav li:hover {
 .icon {
   height: 1em;
 }
-section {
+main {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100%;
+  min-height: 100vh;
   height: max-content;
   width: 100%;
+  z-index: 3;
+  position: relative;
 }
-main {
+article {
   width: min(600px, 100%);
   height: 100%;
   padding: 0rem 1.5rem;
   display: block;
-  z-index: 3;
 }
 #follower {
   width: 10rem;
@@ -208,27 +211,27 @@ main {
   border-radius: 0;
 }
 
-/* main's text */
+/* article's text */
 
-main h1,
-main h2,
-main h3 {
+article h1,
+article h2,
+article h3 {
   text-align: center;
   color: var(--heading);
   font-family: "Playfair Display", serif;
   text-shadow: 0 0 5px black;
   margin: 3rem 0;
 }
-main h1 {
+article h1 {
   font-size: 2rem;
 }
-main h2 {
+article h2 {
   font-size: 1.6rem;
 }
-main h3 {
+article h3 {
   font-size: 1.2rem;
 }
-main {
+article {
   font-family: "Roboto Slab", serif;
   text-align: justify;
   word-wrap: break-word;
@@ -237,17 +240,17 @@ main {
   text-shadow: 0 0 3px black;
   font-weight: 300;
 }
-main strong {
+article strong {
   font-weight: 500;
 }
-main p a[href] {
+article p a[href] {
   text-decoration: underline;
 }
-main a:link,
-main a:visited {
+article a:link,
+article a:visited {
   font-weight: 500;
 }
-main p a:hover {
+article p a:hover {
   color: rgb(26, 141, 183);
   text-shadow: 0 0 2px rgb(33, 33, 33);
 }
@@ -257,12 +260,18 @@ main p a:hover {
   *::after {
     transition: 0.5s ease;
   }
+  main {
+    min-height: calc(100vh - var(--nav-height));
+  }
+  article {
+    margin-bottom: auto;
+  }
   nav {
     position: relative;
     top: 0;
     left: 0;
     opacity: 1;
-    height: 20vh;
+    height: var(--nav-height);
     flex-flow: row;
     padding: 0rem 2rem;
     backdrop-filter: blur(0);
@@ -293,7 +302,7 @@ main p a:hover {
 }
 footer {
   width: 100%;
-  height: 20%;
+  height: var(--footer-height);
   margin: 1.5rem auto auto auto;
   display: flex;
   justify-content: center;
