@@ -9,7 +9,20 @@
   {% block head %}
   {% endblock %}
 </head>
-<body x-data="{menu: false}">
+<body x-data="{
+  menu: false,
+  touch: 'ontouchstart' in window,
+  coords: {x: 0, y:0},
+}"
+@pointerover="$refs.follower.style.opacity = '0.3'"
+@pointerleave="$refs.follower.style.opacity = '0'"
+@pointermove="[coords.x, coords.y] = [$event.clientX, $event.clientY]"
+x-init="$watch('coords', c => bg(c.x, c.y, touch?500:2500))"
+>
+  <div id="follow-container" x-ref="follower">
+    <div id="follower"></div>
+    <div id="follower2"></div>
+  </div>
   <div class="hamburger" id="hamburger" @click="menu = !menu">
   <div id="one" :class="{'one-down': menu}"></div>
   <div id="two" :class="{'two-down': menu}"></div>
@@ -37,10 +50,6 @@
       </li>
     </ul>
   </nav>
-  <div id="follow-container">
-    <div id="follower"></div>
-    <div id="follower2"></div>
-  </div>
   <main>
     <article id="content">
       {% block content %} {% endblock %}
@@ -52,39 +61,11 @@
   </footer>
   <script>
     const follower = document.getElementById("follow-container");
-    const bg = (e, d, touch) => {
-      let x, y;
-      if (touch) {
-        x = e.changedTouches[0].clientX;
-        y = e.changedTouches[0].clientY;
-      }
-      else {
-        x = e.clientX;
-        y = e.clientY;
-      }
-        follower.animate({
-        left: x+"px",
-        top: y+"px",
-        }, {duration: d, fill: "forwards"});
+    const bg = (x, y, d) => {
+      follower.animate({
+      transform: `translate(${x}px, ${y}px)`
+      }, {duration: d, fill: "both"});
     };
-    const touchStart = (e) => {
-      follower.style.opacity = "30%";
-      let x = e.targetTouches[0].clientX;
-      let y = e.targetTouches[0].clientY;
-      follower.style.top = y + "px";
-      follower.style.left = x + "px";
-      console.log("meow");
-    };
-    if ("ontouchstart" in window) {
-      document.body.ontouchstart = event => touchStart(event);
-      document.body.ontouchend = () => (follower.style.opacity = "0%");
-      document.body.ontouchmove = event => bg(event, 400, true);
-    }
-    else {
-    document.body.onpointermove = event => bg(event, 3000, false);
-    document.body.onpointerenter = () => (follower.style.opacity = "30%");
-    document.body.onpointerleave = () => (follower.style.opacity = "0%");
-    }
     footer = document.querySelector(".bottom");
     footer.addEventListener("click", () => {
       document.body.scrollTo({top: 0, left: 0, behavior:"smooth"});

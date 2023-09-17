@@ -153,8 +153,8 @@ article {
   display: block;
 }
 #follower {
-  width: 10rem;
-  height: 7rem;
+  width: 50vh;
+  height: 25vh;
   animation: rotate-cursor 10s linear infinite;
   background: rgb(173, 178, 214);
   background: linear-gradient(
@@ -165,8 +165,8 @@ article {
   );
 }
 #follower2 {
-  width: 5rem;
-  height: 7rem;
+  width: 53vh;
+  height: 23vh;
   animation: rotate-cursor 6.5s ease reverse infinite;
   background: rgb(13, 11, 77);
   background: linear-gradient(
@@ -177,7 +177,7 @@ article {
 }
 #follower,
 #follower2 {
-  filter: blur(50px);
+  filter: blur(40px);
   border-radius: 10rem;
   display: block;
   position: fixed;
@@ -188,10 +188,10 @@ article {
 #follow-container {
   position: fixed;
   opacity: 0;
-  top: 200%;
-  left: -50%;
   z-index: 0;
   transition: opacity 0.25s ease;
+  left: 0;
+  top: 0;
 }
 @keyframes rotate-cursor {
   0% {
