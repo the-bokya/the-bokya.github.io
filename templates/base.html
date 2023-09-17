@@ -9,13 +9,13 @@
   {% block head %}
   {% endblock %}
 </head>
-<body>
-  <div class="hamburger" id="hamburger" onclick="menu()">
-  <div id="one"></div>
-  <div id="two"></div>
+<body x-data="{menu: false}">
+  <div class="hamburger" id="hamburger" @click="menu = !menu">
+  <div id="one" :class="{'one-down': menu}"></div>
+  <div id="two" :class="{'two-down': menu}"></div>
   </div>
   </div>
-  <nav id="navbar">
+  <nav id="navbar" :class="{'menu-down': menu}">
     <div class="top">
       <a class="logo" href="/">
         <span>the-bokya</span>
@@ -51,18 +51,6 @@
    <p class="bottom">You've reached the bottom! Click to go to the top.</p>
   </footer>
   <script>
-    const menu = () => {
-      const bar = document.getElementById("navbar");
-      const hamburger = document.getElementById("hamburger");
-      const one = document.getElementById("one");
-      const two = document.getElementById("two");
-      bar.classList.toggle("menu-down");
-      one.classList.toggle("one-down");
-      two.classList.toggle("two-down");
-    }
-    
-
-
     const follower = document.getElementById("follow-container");
     const bg = (e, d, touch) => {
       let x, y;
