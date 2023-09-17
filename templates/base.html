@@ -15,7 +15,7 @@
   coords: {x: 0, y:0},
 }"
 @pointerover="$refs.follower.style.opacity = '0.3'"
-@pointerleave="$refs.follower.style.opacity = '0'"
+@pointerleave="$refs.follower.style.opacity = touch?'0.3':'0'"
 @pointermove="[coords.x, coords.y] = [$event.clientX, $event.clientY]"
 x-init="$watch('coords', c => bg(c.x, c.y, touch?500:2500))"
 >
