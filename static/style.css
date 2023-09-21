@@ -177,7 +177,7 @@ article {
 }
 #follower,
 #follower2 {
-  filter: blur(40px);
+  filter: blur(400px);
   border-radius: 10rem;
   display: block;
   position: fixed;
@@ -310,12 +310,12 @@ footer {
   z-index: 10;
   position: relative;
   left: 0;
+  cursor: pointer;
 }
 .bottom {
   text-align: center;
   font-family: "Lobster Two";
   color: var(--heading);
-  cursor: pointer;
   font-size: 0.5em;
 }
 #footer-line {

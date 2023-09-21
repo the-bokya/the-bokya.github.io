@@ -55,7 +55,7 @@ x-init="$watch('coords', c => bg(c.x, c.y, touch?500:2500))"
       {% block content %} {% endblock %}
     </article>
   </main>
-  <footer>
+  <footer @click="document.body.scrollTo({top: 0, left: 0, behavior:'smooth'})">
     <div id="footer-line"></div>
    <p class="bottom">You've reached the bottom! Click to go to the top.</p>
   </footer>
@@ -66,10 +66,6 @@ x-init="$watch('coords', c => bg(c.x, c.y, touch?500:2500))"
       transform: `translate(${x}px, ${y}px)`
       }, {duration: d, fill: "both"});
     };
-    footer = document.querySelector(".bottom");
-    footer.addEventListener("click", () => {
-      document.body.scrollTo({top: 0, left: 0, behavior:"smooth"});
-    })
   </script>
 </body>
 </html>
