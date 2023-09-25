@@ -177,7 +177,7 @@ article {
 }
 #follower,
 #follower2 {
-  filter: blur(200px);
+  filter: blur(100px);
   border-radius: 10rem;
   display: block;
   position: fixed;
