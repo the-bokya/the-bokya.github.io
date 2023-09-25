@@ -21,7 +21,7 @@
 @touchstart="$refs.follower.style.opacity = '0.3';"
 @touchend="$refs.follower.style.opacity = '0'"
 @touchmove="[coords.x, coords.y] = [$event.changedTouches[0].clientX, $event.changedTouches[0].clientY]"
-x-init="$watch('coords', c => {bg(c.x, c.y, touch?500:2500); console.log(c.x, c.y)})"
+x-init="$watch('coords', c => {bg(c.x, c.y, touch?500:2500)})"
 >
   <div id="follow-container" x-ref="follower">
     <div id="follower"></div>
