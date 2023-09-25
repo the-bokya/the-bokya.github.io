@@ -6,7 +6,7 @@ body {
   font-size: 1.3rem;
   background-color: var(--bg-color);
   overflow-x: hidden;
-  touch-action: pan-y;
+  touch-action: none;
 }
 :root {
   --heading: #fb4934;
@@ -178,7 +178,7 @@ article {
 }
 #follower,
 #follower2 {
-  filter: blur(400px);
+  filter: blur(200px);
   border-radius: 10rem;
   display: block;
   position: fixed;
