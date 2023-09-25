@@ -6,6 +6,7 @@ body {
   font-size: 1.3rem;
   background-color: var(--bg-color);
   overflow-x: hidden;
+  touch-action: pan-y;
 }
 :root {
   --heading: #fb4934;
@@ -49,9 +50,9 @@ a:link {
 }
 #line {
   width: 40%;
-  height: 3px;
+  height: 4px;
   position: relative;
-  top: -0.2em;
+  top: -0.225em;
   background-color: rgb(229, 61, 61);
   margin: auto;
   border-radius: 10rem;
