@@ -18,7 +18,7 @@
 @mouseover="$refs.follower.style.opacity = '0.3';"
 @mouseleave="$refs.follower.style.opacity = '0'"
 @mousemove="[coords.x, coords.y] = [$event.clientX, $event.clientY]"
-@touchstart="$refs.follower.style.opacity = '0.3';"
+@touchstart="$refs.follower.style.opacity = '0.5';"
 @touchend="$refs.follower.style.opacity = '0'"
 @touchmove="[coords.x, coords.y] = [$event.changedTouches[0].clientX, $event.changedTouches[0].clientY]"
 x-init="$watch('coords', c => {bg(c.x, c.y, touch?500:2500)})"

@@ -153,8 +153,8 @@ article {
   display: block;
 }
 #follower {
-  width: 7em;
-  height: 12rem;
+  width: 3em;
+  height: 5rem;
   animation: rotate-cursor 10s linear infinite;
   background: rgb(173, 178, 214);
   background: linear-gradient(
@@ -165,7 +165,7 @@ article {
   );
 }
 #follower2 {
-  width: 9rem;
+  width: 4rem;
   height: 6rem;
   animation: rotate-cursor 6.5s ease reverse infinite;
   background: rgb(13, 11, 77);
@@ -177,7 +177,7 @@ article {
 }
 #follower,
 #follower2 {
-  filter: blur(100px);
+  filter: blur(24px);
   border-radius: 10rem;
   display: block;
   position: fixed;
