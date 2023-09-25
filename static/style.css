@@ -6,7 +6,6 @@ body {
   font-size: 1.3rem;
   background-color: var(--bg-color);
   overflow-x: hidden;
-  touch-action: none;
 }
 :root {
   --heading: #fb4934;
@@ -154,26 +153,26 @@ article {
   display: block;
 }
 #follower {
-  width: 50vh;
-  height: 25vh;
+  width: 6em;
+  height: 8rem;
   animation: rotate-cursor 10s linear infinite;
   background: rgb(173, 178, 214);
   background: linear-gradient(
     45deg,
-    rgba(173, 178, 214, 1) 0%,
+    rgba(205, 211, 255, 1) 0%,
     rgba(88, 99, 204, 1) 52%,
     rgba(212, 89, 60, 1) 96%
   );
 }
 #follower2 {
-  width: 53vh;
-  height: 23vh;
+  width: 9rem;
+  height: 6rem;
   animation: rotate-cursor 6.5s ease reverse infinite;
   background: rgb(13, 11, 77);
   background: linear-gradient(
     45deg,
     rgba(39, 38, 81, 0.75) 0%,
-    rgba(255, 169, 23, 0.75) 67%
+    rgba(255, 196, 95, 0.75) 67%
   );
 }
 #follower,

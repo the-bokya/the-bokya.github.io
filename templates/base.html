@@ -15,10 +15,13 @@
   touch: 'ontouchstart' in window,
   coords: {x: 0, y:0},
 }"
-@pointerover="$refs.follower.style.opacity = '0.3';"
-@pointerleave="$refs.follower.style.opacity = '0'"
-@pointermove="[coords.x, coords.y] = [$event.clientX, $event.clientY]"
-x-init="$watch('coords', c => bg(c.x, c.y, touch?500:2500))"
+@mouseover="$refs.follower.style.opacity = '0.3';"
+@mouseleave="$refs.follower.style.opacity = '0'"
+@mousemove="[coords.x, coords.y] = [$event.clientX, $event.clientY]"
+@touchover="$refs.follower.style.opacity = '0.3';"
+@touchleave="$refs.follower.style.opacity = '0'"
+@touchmove="[coords.x, coords.y] = [$event.changedTouches[0].clientX, $event.changedTouches[0].clientY]"
+x-init="$watch('coords', c => {bg(c.x, c.y, touch?500:2500); console.log(c.x, c.y)})"
 >
   <div id="follow-container" x-ref="follower">
     <div id="follower"></div>
