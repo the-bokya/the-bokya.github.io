@@ -153,8 +153,8 @@ article {
   display: block;
 }
 #follower {
-  width: 6em;
-  height: 8rem;
+  width: 7em;
+  height: 12rem;
   animation: rotate-cursor 10s linear infinite;
   background: rgb(173, 178, 214);
   background: linear-gradient(
