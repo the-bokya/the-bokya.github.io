@@ -216,11 +216,13 @@ article {
 article h1,
 article h2,
 article h3 {
-  text-align: center;
   color: var(--heading);
   font-family: "Playfair Display", serif;
   text-shadow: 0 0 5px black;
   margin: 3rem 0;
+}
+article h1 {
+  text-align: center;
 }
 article h1 {
   font-size: 2rem;
