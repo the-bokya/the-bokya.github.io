@@ -7,7 +7,7 @@
 }
 .card {
   display: block;
-  height: 180px;
+  min-height: 180px;
   width: 240px;
   background-color: #d79921;
   border-radius: 1rem;
