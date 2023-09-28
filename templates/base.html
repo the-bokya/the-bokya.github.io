@@ -1,52 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <link rel="icon" href="https://avatars.githubusercontent.com/u/100779126?s=400&u=f41bc86bdf536c6cde247af770cffe346ab184aa&v=4" />
+  <link rel="icon"
+    href="https://avatars.githubusercontent.com/u/100779126?s=400&u=f41bc86bdf536c6cde247af770cffe346ab184aa&v=4" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="//unpkg.com/alpinejs" defer></script>
   <title>{% block title %} {% endblock %}</title>
   <link href="/style.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css"
+    integrity="sha384-GvrOXuhMATgEsSwCs4smul74iXGOixntILdUW9XmUC6+HX0sLNAK3q71HotJqlAn" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"
+    integrity="sha384-cpW21h6RZv/phavutF+AuVYrr+dA8xD9zs6FwLpaCct6O9ctzYFfFr4dgmgccOTx"
+    crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+    integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+    crossorigin="anonymous"></script>
   {% block head %}
   {% endblock %}
 </head>
+
 <body x-data="{
   menu: false,
   touch: 'ontouchstart' in window,
   coords: {x: 0, y:0},
-}"
-@mouseover="$refs.follower.style.opacity = '0.3';"
-@mouseleave="$refs.follower.style.opacity = '0'"
-@mousemove="[coords.x, coords.y] = [$event.clientX, $event.clientY]"
-@touchstart="$refs.follower.style.opacity = '0.5';"
-@touchend="$refs.follower.style.opacity = '0'"
-@touchmove="[coords.x, coords.y] = [$event.changedTouches[0].clientX, $event.changedTouches[0].clientY]"
-x-init="$watch('coords', c => {bg(c.x, c.y, touch?500:2500)})"
->
+}" @mouseover="$refs.follower.style.opacity = '0.3';" @mouseleave="$refs.follower.style.opacity = '0'"
+  @mousemove="[coords.x, coords.y] = [$event.clientX, $event.clientY]"
+  @touchstart="$refs.follower.style.opacity = '0.5';" @touchend="$refs.follower.style.opacity = '0'"
+  @touchmove="[coords.x, coords.y] = [$event.changedTouches[0].clientX, $event.changedTouches[0].clientY]"
+  x-init="$watch('coords', c => {bg(c.x, c.y, touch?500:2500)})">
   <div id="follow-container" x-ref="follower">
     <div id="follower"></div>
     <div id="follower2"></div>
   </div>
   <div class="hamburger" id="hamburger" @click="menu = !menu">
-  <div id="one" :class="{'one-down': menu}"></div>
-  <div id="two" :class="{'two-down': menu}"></div>
+    <div id="one" :class="{'one-down': menu}"></div>
+    <div id="two" :class="{'two-down': menu}"></div>
   </div>
   </div>
   <nav id="navbar" :class="{'menu-down': menu}">
     <div class="top">
       <a class="logo" href="/">
         <span>the-bokya</span>
-      <div id="line"></div>
+        <div id="line"></div>
       </a>
     </div>
     <ul>
       <li>
         <a href="/blog">Blog</a>
 
-    </li>
-    <li>
+      </li>
+      <li>
         <a href="/fiction">Fiction</a>
-    </li>
+      </li>
       <li>
         <a href="https://www.github.com/the-bokya" class="icon-holder">
           <img src="/github.svg" class="icon" />
@@ -61,15 +68,33 @@ x-init="$watch('coords', c => {bg(c.x, c.y, touch?500:2500)})"
   </main>
   <footer @click="document.body.scrollTo({top: 0, left: 0, behavior:'smooth'})">
     <div id="footer-line"></div>
-   <p class="bottom">You've reached the bottom! Click to go to the top.</p>
+    <p class="bottom">You've reached the bottom! Click to go to the top.</p>
   </footer>
   <script>
     const follower = document.getElementById("follow-container");
     const bg = (x, y, d) => {
       follower.animate({
-      transform: `translate(${x}px, ${y}px)`
-      }, {duration: d, fill: "both"});
+        transform: `translate(${x}px, ${y}px)`
+      }, { duration: d, fill: "both" });
     };
   </script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      renderMathInElement(document.body, {
+        // customised options
+        // • auto-render specific keys, e.g.:
+        delimiters: [
+          { left: '$$', right: '$$', display: true },
+          { left: '$', right: '$', display: false },
+          { left: '\\(', right: '\\)', display: false },
+          { left: '\\[', right: '\\]', display: true }
+        ],
+        // • rendering keys, e.g.:
+        throwOnError: false
+      });
+    });
+  </script>
 </body>
+
 </html>
