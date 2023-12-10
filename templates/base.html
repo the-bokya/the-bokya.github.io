@@ -3,6 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
+  <meta name="darkreader-lock">
   <link rel="icon"
     href="https://avatars.githubusercontent.com/u/100779126?s=400&u=f41bc86bdf536c6cde247af770cffe346ab184aa&v=4" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,10 +26,9 @@
   menu: false,
   touch: 'ontouchstart' in window,
   coords: {x: 0, y:0},
-}" @mouseover="$refs.follower.style.opacity = '0.3';" @mouseleave="$refs.follower.style.opacity = '0'"
-  @mousemove="[coords.x, coords.y] = [$event.clientX, $event.clientY]"
-  @touchstart="$refs.follower.style.opacity = '0.5';" @touchend="$refs.follower.style.opacity = '0'"
-  @touchmove="[coords.x, coords.y] = [$event.changedTouches[0].clientX, $event.changedTouches[0].clientY]"
+}" 
+  @pointerenter="$refs.follower.style.opacity = '0.5';" @pointerup="$refs.follower.style.opacity = '0'"
+  @pointermove="[coords.x, coords.y] = [$event.clientX, $event.clientY]; console.log($event)"
   x-init="$watch('coords', c => {bg(c.x, c.y, touch?500:2500)})">
   <div id="follow-container" x-ref="follower">
     <div id="follower"></div>
