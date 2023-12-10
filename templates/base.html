@@ -26,9 +26,8 @@
   menu: false,
   touch: 'ontouchstart' in window,
   coords: {x: 0, y:0},
-}" 
-  @pointerenter="$refs.follower.style.opacity = '0.5';" @pointerup="$refs.follower.style.opacity = '0'"
-  @pointermove="[coords.x, coords.y] = [$event.clientX, $event.clientY]; console.log($event)"
+}" @pointerenter="$refs.follower.style.opacity = '0.5';" @pointerleave="$refs.follower.style.opacity = '0'"
+  @pointermove="[coords.x, coords.y] = [$event.clientX, $event.clientY]"
   x-init="$watch('coords', c => {bg(c.x, c.y, touch?500:2500)})">
   <div id="follow-container" x-ref="follower">
     <div id="follower"></div>
