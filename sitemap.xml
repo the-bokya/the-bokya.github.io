@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+        <loc>https://thebokya.me/</loc>
+    </url>
+    <url>
+        <loc>https://thebokya.me/blog/</loc>
+    </url>
+    <url>
+        <loc>https://thebokya.me/blog/asimovs-laws/</loc>
+        <lastmod>2023-11-29</lastmod>
+    </url>
+    <url>
+        <loc>https://thebokya.me/blog/first/</loc>
+        <lastmod>2023-08-11</lastmod>
+    </url>
+    <url>
+        <loc>https://thebokya.me/blog/musing/</loc>
+        <lastmod>2023-08-17</lastmod>
+    </url>
+    <url>
+        <loc>https://thebokya.me/blog/seeing-things/</loc>
+        <lastmod>2023-11-03</lastmod>
+    </url>
+    <url>
+        <loc>https://thebokya.me/blog/sss/</loc>
+        <lastmod>2023-09-28</lastmod>
+    </url>
+    <url>
+        <loc>https://thebokya.me/fiction/</loc>
+    </url>
+</urlset>

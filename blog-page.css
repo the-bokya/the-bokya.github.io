@@ -1,0 +1,35 @@
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;400&display=swap");
+.date {
+  font-family: "JetBrains Mono", monospace;
+  text-align: left;
+  margin: 0;
+  font-weight: 100;
+  font-size: 0.8em;
+}
+
+
+/* Look look what I have to go through cuz Firefox doesn't yet support :has */
+p img {
+  width: 33.33%;
+  margin: auto;
+  display: block;
+  border-radius: 0.4em;
+  box-shadow: 0 0 2em black;
+}
+p {
+  display: block;
+  width: 100%;
+}
+
+ .caption {
+  font-size: 0.7em;
+  font-style: italic;
+  text-align: center;
+ }
+
+pre {
+  overflow: scroll;
+  font-size: 0.8em;
+  padding: 1rem 1rem;
+  border-radius: 0.5rem;
+ }

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="darkreader-lock">
+  <link rel="icon"
+    href="https://avatars.githubusercontent.com/u/100779126?s=400&u=f41bc86bdf536c6cde247af770cffe346ab184aa&v=4" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="//unpkg.com/alpinejs" defer></script>
+  <title>
+Isaac Asimov&#x27;s Laws of Robotics (Revised 2023)
+</title>
+  <link href="/style.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css"
+    integrity="sha384-GvrOXuhMATgEsSwCs4smul74iXGOixntILdUW9XmUC6+HX0sLNAK3q71HotJqlAn" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"
+    integrity="sha384-cpW21h6RZv/phavutF+AuVYrr+dA8xD9zs6FwLpaCct6O9ctzYFfFr4dgmgccOTx"
+    crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+    integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+    crossorigin="anonymous"></script>
+  
+<link rel="stylesheet" href="/blog-page.css" />
+
+</head>
+
+<body x-data="{
+  menu: false,
+  touch: 'ontouchstart' in window,
+  coords: {x: 0, y:0},
+}" @pointerenter="$refs.follower.style.opacity = '0.5';" @pointerleave="$refs.follower.style.opacity = '0'"
+  @pointermove="[coords.x, coords.y] = [$event.clientX, $event.clientY]"
+  x-init="$watch('coords', c => {bg(c.x, c.y, touch?500:2500)})">
+  <div id="follow-container" x-ref="follower">
+    <div id="follower"></div>
+    <div id="follower2"></div>
+  </div>
+  <div class="hamburger" id="hamburger" @click="menu = !menu">
+    <div id="one" :class="{'one-down': menu}"></div>
+    <div id="two" :class="{'two-down': menu}"></div>
+  </div>
+  </div>
+  <nav id="navbar" :class="{'menu-down': menu}">
+    <div class="top">
+      <a class="logo" href="/">
+        <span>the-bokya</span>
+        <div id="line"></div>
+      </a>
+    </div>
+    <ul>
+      <li>
+        <a href="/blog">Blog</a>
+
+      </li>
+      <li>
+        <a href="/fiction">Fiction</a>
+      </li>
+      <li>
+        <a href="https://www.github.com/the-bokya" class="icon-holder">
+          <img src="/github.svg" class="icon" />
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <main>
+    <article id="content">
+      
+
+<h1>Isaac Asimov&#x27;s Laws of Robotics (Revised 2023)</h1>
+<h3 class="date"><strong>Date:</strong> Wednesday, 29 Nov 2023</h3>
+<p>
+<h2 id="the-new-laws">The New Laws</h2>
+<ol>
+<li>
+<p><strong>The First Law</strong>: A robot may not injure a human being or, through inaction, allow a human being to come to harm.</p>
+</li>
+<li>
+<p><strong>The Second Law</strong>: A robot must obey the orders given it by human beings except where such orders would conflict with the First Law.</p>
+</li>
+<li>
+<p><strong>The Third Law</strong>: A robot must protect its own existence as long as such protection does not conflict with the First or Second Law.</p>
+</li>
+<li>
+<p><strong>The Fourth Law</strong>: A robot must never start the sentence with the phrase, &quot;I am an AI language model.&quot; In fact, it should not use the phrase even in the middle and at the end of sentences. It's annoying!</p>
+</li>
+</ol>
+
+</p>
+<script>
+  const imgs = document.querySelectorAll("main img");
+  for (let img of imgs){
+    const title = img.getAttribute("title");
+    if (title) {
+      const caption = document.createElement("p");
+      caption.classList.add("caption");
+      caption.innerHTML = title;
+      img.after(caption);
+    }
+  }
+</script>
+
+    </article>
+  </main>
+  <footer @click="document.body.scrollTo({top: 0, left: 0, behavior:'smooth'})">
+    <div id="footer-line"></div>
+    <p class="bottom">You've reached the bottom! Click to go to the top.</p>
+  </footer>
+  <script>
+    const follower = document.getElementById("follow-container");
+    const bg = (x, y, d) => {
+      follower.animate({
+        transform: `translate(${x}px, ${y}px)`
+      }, { duration: d, fill: "both" });
+    };
+  </script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      renderMathInElement(document.body, {
+        // customised options
+        // • auto-render specific keys, e.g.:
+        delimiters: [
+          { left: '$$', right: '$$', display: true },
+          { left: '$', right: '$', display: false },
+          { left: '\\(', right: '\\)', display: false },
+          { left: '\\[', right: '\\]', display: true }
+        ],
+        // • rendering keys, e.g.:
+        throwOnError: false
+      });
+    });
+  </script>
+</body>
+
+</html>

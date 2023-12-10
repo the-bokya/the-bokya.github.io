@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="darkreader-lock">
+  <link rel="icon"
+    href="https://avatars.githubusercontent.com/u/100779126?s=400&u=f41bc86bdf536c6cde247af770cffe346ab184aa&v=4" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="//unpkg.com/alpinejs" defer></script>
+  <title>
+Shamir&#x27;s Secret Sharing
+</title>
+  <link href="/style.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css"
+    integrity="sha384-GvrOXuhMATgEsSwCs4smul74iXGOixntILdUW9XmUC6+HX0sLNAK3q71HotJqlAn" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"
+    integrity="sha384-cpW21h6RZv/phavutF+AuVYrr+dA8xD9zs6FwLpaCct6O9ctzYFfFr4dgmgccOTx"
+    crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+    integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+    crossorigin="anonymous"></script>
+  
+<link rel="stylesheet" href="/blog-page.css" />
+
+</head>
+
+<body x-data="{
+  menu: false,
+  touch: 'ontouchstart' in window,
+  coords: {x: 0, y:0},
+}" @pointerenter="$refs.follower.style.opacity = '0.5';" @pointerleave="$refs.follower.style.opacity = '0'"
+  @pointermove="[coords.x, coords.y] = [$event.clientX, $event.clientY]"
+  x-init="$watch('coords', c => {bg(c.x, c.y, touch?500:2500)})">
+  <div id="follow-container" x-ref="follower">
+    <div id="follower"></div>
+    <div id="follower2"></div>
+  </div>
+  <div class="hamburger" id="hamburger" @click="menu = !menu">
+    <div id="one" :class="{'one-down': menu}"></div>
+    <div id="two" :class="{'two-down': menu}"></div>
+  </div>
+  </div>
+  <nav id="navbar" :class="{'menu-down': menu}">
+    <div class="top">
+      <a class="logo" href="/">
+        <span>the-bokya</span>
+        <div id="line"></div>
+      </a>
+    </div>
+    <ul>
+      <li>
+        <a href="/blog">Blog</a>
+
+      </li>
+      <li>
+        <a href="/fiction">Fiction</a>
+      </li>
+      <li>
+        <a href="https://www.github.com/the-bokya" class="icon-holder">
+          <img src="/github.svg" class="icon" />
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <main>
+    <article id="content">
+      
+
+<h1>Shamir&#x27;s Secret Sharing</h1>
+<h3 class="date"><strong>Date:</strong> Thursday, 28 Sep 2023</h3>
+<p>
+<p>The title might sound like a spell straight out of Harry Potter ('<em>Wingardium Leviosa!</em>'), but trust me it is not! It is a spell from Mathematics!</p>
+<p>You might have come across some <em>Interesting Facts</em> while scrolling Instagram or the likes that the keys to the Internet are in the hands of around 10-20 people and 7 of them can bring the internet down. However outlandish that statement may sound, it is, to an extent, true. Relax! It isn't the end of the world! The keys are signed every three months and will have very limited impact on the Internet if exposed at all. Just read <a href="https://www.icann.org/en/blogs/details/the-problem-with-the-seven-keys-13-2-2017-en">this</a> and stop panicking.</p>
+<p>Back to the topic, the Shamir Secret Sharing System was developed (obviously) by Adi Shamir. The same Shamir from R<strong>S</strong>A (RSA is an encryption scheme that literally runs the internet; even if you don't know what the heck I am talking about, be grateful that RSA is protecting your data across the web and beyond)! The system divides a secret (a secret is something you hide from everyone, if it is not apparent) into many different parts in the form of coordinates on a polynomial.</p>
+<p>We then reconstruct the polynomial from the coordinates</p>
+<p>Please don't doze off! Let me try another approach! Does a story sound good? Okay!</p>
+<p>You are the hero (note that 'hero' is gender-neutral) of this story. So, my little hero, you are a scientist working at a top secret research facility and have stumbled upon a really dangerous secret — a number, which is the password to the head scientist's laptop.</p>
+<p>Now that you have this dangerous number, you, like a good member of the society, want to share this number amongst other four of your peers so that you can bully Mr. Boss into giving you a few extra holidays.</p>
+<p>Now, as a student of game theory, you know that your peers cannot be trusted and one (or more) of them could just go to the boss and snitch on you, putting all of you into a <em>lot</em> of trouble and earning the snitch a lot of blessings.</p>
+<p>To preserve this number, you decide to use Shamir's method. You once read it in Adi Shamir's paper 'How to Share a Secret' and have been dying to implement it ever since.</p>
+<p>Now, you can share the secret amongst $5$ scientists and you won't be able to retrieve the number unless you have a number of scientists above a threshold consenting to unlock it. The secret number will be available only when atleast $3$ scientists put in their keys and rotate them.</p>
+<p>This is called a threshold scheme.</p>
+<p>The technique involves passing the number as a constant inside a polynomial with random coefficients. If you have forgotten, a polynomial is an equation with a bunch of $x$'s with increasing powers starting from one and attached to a number. Remember those quadratic equations with their elusive roots, those were polynomials! Polynomials are generally something like this:</p>
+<p>$f(x) = constant + ax + bx^2 + cx^3 ... wx^n$</p>
+<p>They produce really awesome shapes depending on their coefficients and degree (the number of $x$'s in the equation). Some of the are:</p>
+<p><img src="/img/2023-09-26-21-47-53-image.png" alt="" /></p>
+<p><img src="/img/2023-09-26-21-51-36-image.png" alt="" title="I like to call this the 'mountain'" /></p>
+<p>They can even be straight lines, where the highest power of $x$ is 1</p>
+<p><img src="/img/2023-09-26-22-07-20-image.png" alt="" /></p>
+<p>&quot;Wait a minute,&quot; you might say, and storm away, feeling betrayed thinking that I just lured you into solving a bunch of maths while I promised you cryptography. Well, be patient.</p>
+<p>The best thing is that polynomials aren't all about their looks! Adi Shamir found a really good use for them. See, the thing with polynomials is that (given enough of them) we can reverse-engineer/reconstruct them from the points that lie on them. Let's start with the most basic example: a line.</p>
+<p>You have 2 points:</p>
+<p><img src="/img/2023-09-26-22-10-56-image.png" alt="" /></p>
+<p>You can easily draw a line through them:</p>
+<p><img src="/img/2023-09-26-22-12-35-image.png" alt="" /></p>
+<p>An important fact about this line is that it is distinct and no other lines can be produced from the given two points. Another fact is that if you have the line, you have the equation as well.</p>
+<p>The same applies to polynomials of higher degrees. If you have $3$ points, you can draw a quadratic curve that passes through them. And those $3$ poins will always give you the same quadratic curve. In general, you can reconstruct an polynomial of $n$ degree if there are $n+1$ <em>distinct</em> points. Remember drawing curves for statistics in school when you would draw the points extra large so as to make the curves pass through them?</p>
+<p>One more thing to note here is that you cannot reconstruct a <em>distinct</em> equation if you have less than $n+1$ points. You could draw all sorts of crazy shapes intersecting only two points, but none of them are distinct. You get an infinite number of quadratic equations passing through $2$ points, but there's only one quadratic equation passing through $3$ points.</p>
+<p>Now, the fun begins!</p>
+<h2 id="the-recipe">The Recipe</h2>
+<ol>
+<li>
+<p>The first part of the process is</p>
+<ul>
+<li>
+<p>Hold the secret number firmly in your hand</p>
+</li>
+<li>
+<p>Sneak it into the equation. You'll know exactly why we are putting this number where we are in the equation when we reconstruct the secret. We are gonna divide the secret amongst the scientists. We will use a quadratic equation so that the minimum points (and thus scientists) need to retrieve the equation are $3$ as quadratic equations are of the degree $2$ and thus atleast $2+1$ points are needed to reconstruct the equation. Write the following equation down:</p>
+<p>$y = secret + ax + bx^2$</p>
+<p>Here, $a$ and $b$ are completely random numbers. You will forget they ever existed after the first part of the process is done. Then you will have to reconstruct them in the second part. Randomness helps us in evading guesses.</p>
+</li>
+<li>
+<p>We will assign $x$ as $1$ through $5$ for each scientist and enter the $x$ into the equation. Each scientist will get their own $y$ to make a sticker of and put on their laptop!</p>
+</li>
+<li>
+<p>They have to preserve their pairs of $x$'s and $y$'s, called shares, if they ever want to retrieve the number.</p>
+</li>
+<li>
+<p>Done! That's all it takes to divide a secret! Now, unless atleast $3$ of the $5$ scientists are willing to retrieve the secret, say bye-bye to your vacations!</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Your boss is overworking your entire team and all of you agree that something needs to be done about it. You take the lead.</p>
+<ul>
+<li>
+<p>Gather $3$ or more scientists (the more the merrier).</p>
+</li>
+<li>
+<p>Take them to your ultra-safe safe where you kept the secret.</p>
+</li>
+<li>
+<p>List the things that you know:</p>
+<ol>
+<li>The equation we used for the encryption was quadratic</li>
+<li>The keys (the $x$'s and $y$'s) you gave the scientists can be used to reconstruct the equation</li>
+</ol>
+</li>
+<li>
+<p>Now, you have all the points, but you never gave a thought to the exact method of reconstructing the secret. You just intuitively knew what was gonna happen! Luckily, you have a scientist, who is a mathematician by night and who points you towards Lagrange's formula. Lagrange was this 18<sup>th</sup> century dude who made this incredible method that solves the exact problem we are facing. It takes in a bunch of points, and, for each point, it creates this monstrosity: $L_i(x) = \frac{(x - x_0)(x - x_1) \cdots (x - x_{i-1})(x - x_{i+1}) \cdots (x - x_n)}{(x_i - x_0)(x_i - x_1) \cdots (x_i - x_{i-1})(x_i - x_{i+1}) \cdots (x_i - x_n)}$</p>
+<p>$L_i(x)$ is a term here for each of the points and $x_i$ is the point x-coordinate of the point we are using and all the other $x_{whatever}$ are the other points. We then multiply these $L_i(x)$'s with their respective $y_i$'s and add them up! This gives us a function $P(x)$.</p>
+<p>$P(x) = \sum_{i=0}^{n} y_i \cdot L_i(x)$</p>
+<p>Believe it or not, P(x) is our original function! The one we had to bid farewell to when we were done sharing our secrets. It's been so long!</p>
+</li>
+<li>
+<p>We still don't know how to reconstruct the secret. Let's go back to the function's original form:</p>
+<p>$y = secret + ax + bx^2$</p>
+<p>Through our rebellious shenanigans, we know that:</p>
+<p>$P(x) = secret + ax + bx^2$</p>
+<p>You can now give any $x$ to $P(x)$ and it will bounce happily and give you some number. But, we are looking at a really specific (and special) $x$ here. Close your eyes and think (open them if you forget the equation). Think. Think. Think!</p>
+<p>Yep! You bright little kiddo! The special $x$ is $0$, the secret ingredient of our secret recipe!</p>
+<p>$P(0) = secret + a\cdot0+b\cdot0^2$</p>
+<p>Thus:</p>
+<p>$P(0) = secret$</p>
+</li>
+<li>
+<p>$LHS = RHS$</p>
+<p>Yep! You got your secret back and are on your way to Lonavala!</p>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="getting-your-hands-dirty">Getting Your Hands Dirty</h2>
+<p>You just beheld the miracles mathematics can do. If any of the concepts or mathematics bounced right over your head, you got me to blame.</p>
+<p>By the way. here's some code for you to experiment with in the Common Tongue:</p>
+<ol>
+<li>To share the secret and retrieve the shares:</li>
+</ol>
+<pre data-lang="python" style="background-color:#2b303b;color:#c0c5ce;" class="language-python "><code class="language-python" data-lang="python"><span style="color:#b48ead;">import </span><span>random
+</span><span>
+</span><span style="color:#65737e;"># ax^2 + bx + secret = y
+</span><span>
+</span><span>a, b = random.</span><span style="color:#bf616a;">randint</span><span>(-</span><span style="color:#d08770;">10000</span><span>, </span><span style="color:#d08770;">10000</span><span>), random.</span><span style="color:#bf616a;">randint</span><span>(-</span><span style="color:#d08770;">10000</span><span>, </span><span style="color:#d08770;">10000</span><span>)
+</span><span>
+</span><span>secret = </span><span style="color:#bf616a;">int</span><span>(</span><span style="color:#96b5b4;">input</span><span>(&quot;</span><span style="color:#a3be8c;">Enter secret: </span><span>&quot;))
+</span><span>
+</span><span style="color:#b48ead;">def </span><span style="color:#8fa1b3;">get_y</span><span>(</span><span style="color:#bf616a;">x</span><span>):
+</span><span>    </span><span style="color:#b48ead;">return </span><span>a * x * x + b * x + secret
+</span><span>
+</span><span style="color:#b48ead;">for </span><span>i </span><span style="color:#b48ead;">in </span><span style="color:#96b5b4;">range</span><span>(</span><span style="color:#d08770;">1</span><span>, </span><span style="color:#d08770;">6</span><span>):
+</span><span>    </span><span style="color:#96b5b4;">print</span><span>(</span><span style="color:#b48ead;">f</span><span>&quot;</span><span style="color:#a3be8c;">The five parts of the secret are </span><span>{i}</span><span style="color:#a3be8c;">, </span><span>{</span><span style="color:#bf616a;">get_y</span><span>(i)}&quot;)
+</span></code></pre>
+<ol start="2">
+<li>To reconstruct from the shares:</li>
+</ol>
+<pre data-lang="python" style="background-color:#2b303b;color:#c0c5ce;" class="language-python "><code class="language-python" data-lang="python"><span style="color:#b48ead;">from </span><span>functools </span><span style="color:#b48ead;">import </span><span style="color:#96b5b4;">reduce
+</span><span>
+</span><span>
+</span><span style="color:#b48ead;">def </span><span style="color:#8fa1b3;">lagrange</span><span>(</span><span style="color:#bf616a;">x</span><span>, </span><span style="color:#bf616a;">xys</span><span>):
+</span><span>    common_numerator = </span><span style="color:#96b5b4;">reduce</span><span>(</span><span style="color:#b48ead;">lambda </span><span style="color:#bf616a;">x</span><span>, </span><span style="color:#bf616a;">y</span><span>: x * y, [(x - xy[</span><span style="color:#d08770;">0</span><span>]) </span><span style="color:#b48ead;">for </span><span>xy </span><span style="color:#b48ead;">in </span><span>xys], </span><span style="color:#d08770;">1</span><span>)
+</span><span>    out = </span><span style="color:#d08770;">0
+</span><span>    </span><span style="color:#b48ead;">for </span><span>xy </span><span style="color:#b48ead;">in </span><span>xys:
+</span><span>        </span><span style="color:#96b5b4;">print</span><span>(out)
+</span><span>        xn, yn = xy
+</span><span>        current_term = </span><span style="color:#d08770;">1
+</span><span>        current_numerator = common_numerator // (x - xn)
+</span><span>        current_denominator = </span><span style="color:#96b5b4;">reduce</span><span>(
+</span><span>            </span><span style="color:#b48ead;">lambda </span><span style="color:#bf616a;">xi</span><span>, </span><span style="color:#bf616a;">yi</span><span>: xi * yi,
+</span><span>            [(xn - xy[</span><span style="color:#d08770;">0</span><span>]) </span><span style="color:#b48ead;">if </span><span>xn != xy[</span><span style="color:#d08770;">0</span><span>] </span><span style="color:#b48ead;">else </span><span style="color:#d08770;">1 </span><span style="color:#b48ead;">for </span><span>xy </span><span style="color:#b48ead;">in </span><span>xys],
+</span><span>            </span><span style="color:#d08770;">1</span><span>,
+</span><span>        )
+</span><span>        current_term = (current_numerator / current_denominator) * xy[</span><span style="color:#d08770;">1</span><span>]
+</span><span>        </span><span style="color:#96b5b4;">print</span><span>(current_numerator, current_denominator)
+</span><span>        out += current_term
+</span><span>    </span><span style="color:#b48ead;">return </span><span>out
+</span><span>
+</span><span>
+</span><span>xys = []
+</span><span>
+</span><span style="color:#b48ead;">for </span><span>i </span><span style="color:#b48ead;">in </span><span style="color:#96b5b4;">range</span><span>(</span><span style="color:#d08770;">5</span><span>):
+</span><span>    xi, yi = [</span><span style="color:#bf616a;">int</span><span>(i) </span><span style="color:#b48ead;">for </span><span>i </span><span style="color:#b48ead;">in </span><span style="color:#96b5b4;">input</span><span>(</span><span style="color:#b48ead;">f</span><span>&quot;</span><span style="color:#a3be8c;">Enter x</span><span>{i+</span><span style="color:#d08770;">1</span><span>}</span><span style="color:#a3be8c;"> and y</span><span>{i+</span><span style="color:#d08770;">1</span><span>}</span><span style="color:#a3be8c;">: </span><span>&quot;).</span><span style="color:#bf616a;">split</span><span>()]
+</span><span>    xys.</span><span style="color:#bf616a;">append</span><span>([xi, yi])
+</span><span>
+</span><span style="color:#96b5b4;">print</span><span>(</span><span style="color:#bf616a;">lagrange</span><span>(</span><span style="color:#d08770;">0</span><span>, xys))
+</span></code></pre>
+<p>You could increase the number of degrees of the equation (the threshold) or increase the participants or do all sorts of things.</p>
+<p>Happy hacking!</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>You just learned a neat little trick to divide a secret amongst a number of participants while unwillingly facing a little maths with it. Fun fact: the co-founder of PayPal, Max Levchin, implemented the scheme in the early days of the company to secure the password to the company's database, but it was later shelved when eBay acquired the company.</p>
+<h3 id="references">References</h3>
+<ol>
+<li>
+<p><a href="https://web.mit.edu/6.857/OldStuff/Fall03/ref/Shamir-HowToShareASecret.pdf">The original paper by Shamir</a></p>
+</li>
+<li>
+<p><a href="https://max.levch.in/post/724289457144070144/shamir-secret-sharing-its-3am-paul-the-head-of">The post that led me down this rabbit hole</a></p>
+</li>
+</ol>
+
+</p>
+<script>
+  const imgs = document.querySelectorAll("main img");
+  for (let img of imgs){
+    const title = img.getAttribute("title");
+    if (title) {
+      const caption = document.createElement("p");
+      caption.classList.add("caption");
+      caption.innerHTML = title;
+      img.after(caption);
+    }
+  }
+</script>
+
+    </article>
+  </main>
+  <footer @click="document.body.scrollTo({top: 0, left: 0, behavior:'smooth'})">
+    <div id="footer-line"></div>
+    <p class="bottom">You've reached the bottom! Click to go to the top.</p>
+  </footer>
+  <script>
+    const follower = document.getElementById("follow-container");
+    const bg = (x, y, d) => {
+      follower.animate({
+        transform: `translate(${x}px, ${y}px)`
+      }, { duration: d, fill: "both" });
+    };
+  </script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      renderMathInElement(document.body, {
+        // customised options
+        // • auto-render specific keys, e.g.:
+        delimiters: [
+          { left: '$$', right: '$$', display: true },
+          { left: '$', right: '$', display: false },
+          { left: '\\(', right: '\\)', display: false },
+          { left: '\\[', right: '\\]', display: true }
+        ],
+        // • rendering keys, e.g.:
+        throwOnError: false
+      });
+    });
+  </script>
+</body>
+
+</html>

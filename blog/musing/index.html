@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="darkreader-lock">
+  <link rel="icon"
+    href="https://avatars.githubusercontent.com/u/100779126?s=400&u=f41bc86bdf536c6cde247af770cffe346ab184aa&v=4" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="//unpkg.com/alpinejs" defer></script>
+  <title>
+Musings
+</title>
+  <link href="/style.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css"
+    integrity="sha384-GvrOXuhMATgEsSwCs4smul74iXGOixntILdUW9XmUC6+HX0sLNAK3q71HotJqlAn" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"
+    integrity="sha384-cpW21h6RZv/phavutF+AuVYrr+dA8xD9zs6FwLpaCct6O9ctzYFfFr4dgmgccOTx"
+    crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+    integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+    crossorigin="anonymous"></script>
+  
+<link rel="stylesheet" href="/blog-page.css" />
+
+</head>
+
+<body x-data="{
+  menu: false,
+  touch: 'ontouchstart' in window,
+  coords: {x: 0, y:0},
+}" @pointerenter="$refs.follower.style.opacity = '0.5';" @pointerleave="$refs.follower.style.opacity = '0'"
+  @pointermove="[coords.x, coords.y] = [$event.clientX, $event.clientY]"
+  x-init="$watch('coords', c => {bg(c.x, c.y, touch?500:2500)})">
+  <div id="follow-container" x-ref="follower">
+    <div id="follower"></div>
+    <div id="follower2"></div>
+  </div>
+  <div class="hamburger" id="hamburger" @click="menu = !menu">
+    <div id="one" :class="{'one-down': menu}"></div>
+    <div id="two" :class="{'two-down': menu}"></div>
+  </div>
+  </div>
+  <nav id="navbar" :class="{'menu-down': menu}">
+    <div class="top">
+      <a class="logo" href="/">
+        <span>the-bokya</span>
+        <div id="line"></div>
+      </a>
+    </div>
+    <ul>
+      <li>
+        <a href="/blog">Blog</a>
+
+      </li>
+      <li>
+        <a href="/fiction">Fiction</a>
+      </li>
+      <li>
+        <a href="https://www.github.com/the-bokya" class="icon-holder">
+          <img src="/github.svg" class="icon" />
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <main>
+    <article id="content">
+      
+
+<h1>Musings</h1>
+<h3 class="date"><strong>Date:</strong> Thursday, 17 Aug 2023</h3>
+<p>
+<p>Hello, let me formally introduce myself: I am Ayush, just one of the trillions of tiny organisms that inhabit this planet. It seemed like my life had no single direction and I'd move here and there (in my mind, <em>obviously</em>). So I decided to start <strong>journaling</strong>. They say it helps in organising your thoughts.</p>
+<p>I sometimes wonder (past 2 AM, a lot of times) what actually consciousness is. And why does our reality exist at all? What I want to say is: have you ever thought if absolutely <em>nothing</em> existed? AT. ALL?</p>
+<p>Why is there a reason for the fabric of our reality to exist in the first place? Though whoever (or whatever) made this reality made the laws of Physics and Mathematics real fun. We gotta give them credit for that.</p>
+<p>We never stop to appreciate how much of an amazing phenomenon life is! Just think of all the fundamental units of matter that had to come together and interact to form the most basic regenerating unit something not unlike (well, we <em>are</em> definitely made of more than two states and inhabit more than two dimensions as far as I know) the <a href="https://en.wikipedia.org/wiki/Glider_(Conway%27s_Game_of_Life)">Glider</a> in <a href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life">Conway's Game of Life</a>. I mean, this is how we were actually made: a really huge (so huge you can't imagine, your brain will go into SegFault, I'm warning you!) number of such Gliders (made out of, I was bad at chemistry but I am 99% sure, Carbon compounds) and an array of their variations interplaying, dancing, fighting, perishing and, if fortunate, flourishing to whelp the first single-celled organism. All of this was extremely serendipitous (you can't even predict Conway's Game of Life, so stop predicting your own life!). If someone went roughly 4 billion years back in a time machine and gave the <a href="https://en.wikipedia.org/wiki/Primordial_soup">primordial soup</a> a good stir (a single dip of the finger would also do), who knows what kind of abominations would be inhabiting this planet right at this moment? Anyways, fast-forward billions of years and you have us: a bunch of neurons coming together, sharing electric shocks, and wondering how they were made.</p>
+<p><img src="/img/Animated_glider_emblem.gif" alt="The Glider" title="The Gliders are helluva minions who can come together and make awesome things" /></p>
+<p>One more thing that fascinates me is how all of the mathematics in this world exists simultaneously as a set of unbreakable rules and as something completely abstract plucked out of the imagination of mathematicians.</p>
+<p>The closest I can come to making sense of all of this is by thinking of mathematics as the language that the Universe speaks in. We humans, being the curious polyglots we are, interact with our surroundings and then learn the language they speak through close observation. For example, Egyptian geometry was literally created out of a necessity to keep track of the farm area when the Nile flooded them.</p>
+<p>So these are some of my thoughts. Hope my brain likes all the journaling.</p>
+<p><strong>Edit:</strong> I forgot to mention that Conway's Game of Life can be made using <a href="https://www.youtube.com/watch?v=xP5-iIeKXE8">Conway's Game of Life</a>, so there's a good chance that you live in a simulation. <a href="https://www.youtube.com/watch?v=4lO0iZDzzXkt">The vastness of it all is mind-boggling and humbling</a>.</p>
+
+</p>
+<script>
+  const imgs = document.querySelectorAll("main img");
+  for (let img of imgs){
+    const title = img.getAttribute("title");
+    if (title) {
+      const caption = document.createElement("p");
+      caption.classList.add("caption");
+      caption.innerHTML = title;
+      img.after(caption);
+    }
+  }
+</script>
+
+    </article>
+  </main>
+  <footer @click="document.body.scrollTo({top: 0, left: 0, behavior:'smooth'})">
+    <div id="footer-line"></div>
+    <p class="bottom">You've reached the bottom! Click to go to the top.</p>
+  </footer>
+  <script>
+    const follower = document.getElementById("follow-container");
+    const bg = (x, y, d) => {
+      follower.animate({
+        transform: `translate(${x}px, ${y}px)`
+      }, { duration: d, fill: "both" });
+    };
+  </script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      renderMathInElement(document.body, {
+        // customised options
+        // • auto-render specific keys, e.g.:
+        delimiters: [
+          { left: '$$', right: '$$', display: true },
+          { left: '$', right: '$', display: false },
+          { left: '\\(', right: '\\)', display: false },
+          { left: '\\[', right: '\\]', display: true }
+        ],
+        // • rendering keys, e.g.:
+        throwOnError: false
+      });
+    });
+  </script>
+</body>
+
+</html>

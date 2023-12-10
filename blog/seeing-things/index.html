@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="darkreader-lock">
+  <link rel="icon"
+    href="https://avatars.githubusercontent.com/u/100779126?s=400&u=f41bc86bdf536c6cde247af770cffe346ab184aa&v=4" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="//unpkg.com/alpinejs" defer></script>
+  <title>
+Trying to See Things
+</title>
+  <link href="/style.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css"
+    integrity="sha384-GvrOXuhMATgEsSwCs4smul74iXGOixntILdUW9XmUC6+HX0sLNAK3q71HotJqlAn" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"
+    integrity="sha384-cpW21h6RZv/phavutF+AuVYrr+dA8xD9zs6FwLpaCct6O9ctzYFfFr4dgmgccOTx"
+    crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+    integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+    crossorigin="anonymous"></script>
+  
+<link rel="stylesheet" href="/blog-page.css" />
+
+</head>
+
+<body x-data="{
+  menu: false,
+  touch: 'ontouchstart' in window,
+  coords: {x: 0, y:0},
+}" @pointerenter="$refs.follower.style.opacity = '0.5';" @pointerleave="$refs.follower.style.opacity = '0'"
+  @pointermove="[coords.x, coords.y] = [$event.clientX, $event.clientY]"
+  x-init="$watch('coords', c => {bg(c.x, c.y, touch?500:2500)})">
+  <div id="follow-container" x-ref="follower">
+    <div id="follower"></div>
+    <div id="follower2"></div>
+  </div>
+  <div class="hamburger" id="hamburger" @click="menu = !menu">
+    <div id="one" :class="{'one-down': menu}"></div>
+    <div id="two" :class="{'two-down': menu}"></div>
+  </div>
+  </div>
+  <nav id="navbar" :class="{'menu-down': menu}">
+    <div class="top">
+      <a class="logo" href="/">
+        <span>the-bokya</span>
+        <div id="line"></div>
+      </a>
+    </div>
+    <ul>
+      <li>
+        <a href="/blog">Blog</a>
+
+      </li>
+      <li>
+        <a href="/fiction">Fiction</a>
+      </li>
+      <li>
+        <a href="https://www.github.com/the-bokya" class="icon-holder">
+          <img src="/github.svg" class="icon" />
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <main>
+    <article id="content">
+      
+
+<h1>Trying to See Things</h1>
+<h3 class="date"><strong>Date:</strong> Friday, 03 Nov 2023</h3>
+<p>
+<p>It is 2:00 AM as I write this, while laying in bed. I have come to the conclusion that I have looked at most of my life from inside myself.</p>
+<p>I think it is cumbersome for someone like me to explain, but most of my life, I have observed things like they were a TV show. I think that's unsurprising because I watched a lot of cartoon as a kid! I do not know for certain though.</p>
+<p>In my younger years, I was quite perceptive of my environment. The smells, the visuals, the bursts of feelings, all were very well alive inside me. But with time I started living inside my head, only observing as a passing observer.</p>
+<p>Is it normal for feelings to dampen as we grow? I think many incidents in my lifetime too have shaped me. You won't know me completely until you have been me for all these years. Frankly, I myself have seen various 'me's playing their parts and leaving over the yeara.</p>
+<p>When it comes to other people, I fail to understand them many a times. I use the word 'understand' in the context of getting to know their self. Something like a signature of their person of sorts. Not thinking beyond things that were of immediate value to me must have played a good part, I guess.</p>
+<p>I also have been unforgivably pessimistic and anxious for the last few years. Though anxiety and pessimism have their own benefits, I have seldom known the benefits of being carefree.</p>
+<p>Amongst all this chaos inside, I let pass an unignorable amount of moments taking place in front of me. I think I never knew how to fully experience them. A lot of moments were comparable to a muted-sounding background orchestra in my dreams.</p>
+<p>I recently started devouring a book. I say <em>devouring</em> because I had read a large portion of it till now, but recently did I start hunting for the next sentence, famished. Knowing (or rather experiencing) another person through pages has opened my mind to dormant experiences.</p>
+<p>I have made a quite foolish decision to stay optimistic no matter what. My explanation is quite simple (and most probably flawed): there is no reason not to. Even if there were such a reason. I think I have overcomplicated most of my thought-process through analysis.</p>
+<p>I will try my best to truly feel the wet mud the next time I smell it.</p>
+<p>Until we turn another page in life!</p>
+
+</p>
+<script>
+  const imgs = document.querySelectorAll("main img");
+  for (let img of imgs){
+    const title = img.getAttribute("title");
+    if (title) {
+      const caption = document.createElement("p");
+      caption.classList.add("caption");
+      caption.innerHTML = title;
+      img.after(caption);
+    }
+  }
+</script>
+
+    </article>
+  </main>
+  <footer @click="document.body.scrollTo({top: 0, left: 0, behavior:'smooth'})">
+    <div id="footer-line"></div>
+    <p class="bottom">You've reached the bottom! Click to go to the top.</p>
+  </footer>
+  <script>
+    const follower = document.getElementById("follow-container");
+    const bg = (x, y, d) => {
+      follower.animate({
+        transform: `translate(${x}px, ${y}px)`
+      }, { duration: d, fill: "both" });
+    };
+  </script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      renderMathInElement(document.body, {
+        // customised options
+        // • auto-render specific keys, e.g.:
+        delimiters: [
+          { left: '$$', right: '$$', display: true },
+          { left: '$', right: '$', display: false },
+          { left: '\\(', right: '\\)', display: false },
+          { left: '\\[', right: '\\]', display: true }
+        ],
+        // • rendering keys, e.g.:
+        throwOnError: false
+      });
+    });
+  </script>
+</body>
+
+</html>
