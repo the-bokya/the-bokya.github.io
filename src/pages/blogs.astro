@@ -1,6 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
-const blogs: string[] = await Astro.glob("./posts/blog/*");
+const blogs: any[] = await Astro.glob("./posts/blog/*");
 ---
 
 <Layout title="Blog Posts">

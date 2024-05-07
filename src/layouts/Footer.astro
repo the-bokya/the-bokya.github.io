@@ -1,0 +1,18 @@
+---
+import Image from "astro/components/Image.astro";
+import footerBorder from "../assets/img/footerBorder.svg";
+const footer = `url(${footerBorder.src})`;
+---
+
+<footer><Image src={footerBorder} alt="" />meow</footer>
+<style define:vars={footer}>
+  footer {
+    grid-row: footer-start / footer-end;
+    grid-column: body-start / body-end;
+    margin: 0;
+    border-image: var(--footer) 20;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+  }
+</style>
