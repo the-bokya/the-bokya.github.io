@@ -1,16 +1,28 @@
 ---
+import type NavLink from "../layouts/NavProp";
 interface Props {
-  pages: string[];
+  pages: NavLink[];
 }
 const { pages } = Astro.props;
 ---
 
 <nav>
   <ul>
-    {pages.map((i) => <li>{i}</li>)}
+    {
+      pages.map((i) => (
+        <a href={i.link}>
+          <li>{i.title}</li>
+        </a>
+      ))
+    }
   </ul>
 </nav>
 <style>
+  a {
+    color: white;
+    text-decoration: none;
+    height: 100%;
+  }
   nav {
     padding: 0;
     height: 4rem;
@@ -49,14 +61,14 @@ const { pages } = Astro.props;
     border-radius: 10rem;
   }
   nav li:hover {
-    font-weight: 800;
     cursor: pointer;
     background-color: rgba(255, 255, 255, 0.949);
-    color: black;
     box-shadow:
       2px 2px 7px hsla(154, 100%, 50%, 0.768),
       -2px -2px 7px hsla(0, 100%, 50%, 0.774),
       -2px 2px 7px hsla(250, 100%, 50%, 0.5);
+    color: black;
+    font-weight: 800;
     text-shadow: 0 0 1px rgba(0, 0, 0, 0.4);
   }
 </style>

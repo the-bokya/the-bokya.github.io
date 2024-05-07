@@ -1,0 +1,10 @@
+---
+import Layout from "../layouts/Layout.astro";
+const blogs: string[] = await Astro.glob("./posts/blog/*");
+---
+
+<Layout title="Blog Posts">
+  <ul>
+    {blogs.map((i) => <li>{i.frontmatter.title}</li>)}
+  </ul>
+</Layout>
