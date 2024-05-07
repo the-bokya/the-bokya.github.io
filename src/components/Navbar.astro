@@ -1,0 +1,61 @@
+---
+interface Props {
+  pages: string[];
+}
+const { pages } = Astro.props;
+---
+
+<nav>
+  <ul>
+    {pages.map((i) => <li>{i}</li>)}
+  </ul>
+</nav>
+<style>
+  nav {
+    padding: 0;
+    height: 4rem;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.523);
+    grid-column: nav-start / nav-end;
+    margin: 1em;
+    border-radius: 10rem;
+    width: fit-content;
+    display: block;
+    position: sticky;
+    justify-self: center;
+    border: 2px solid white;
+    top: 0.7rem;
+    font-family: "Space Mono", monospace;
+    backdrop-filter: blur(10px);
+  }
+  nav ul {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+  nav li {
+    width: fit-content;
+    list-style: none;
+    padding: 0 min(3rem, 5vw);
+    height: 100%;
+    margin: 0;
+    transition: 0.1s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10rem;
+  }
+  nav li:hover {
+    font-weight: 800;
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.949);
+    color: black;
+    box-shadow:
+      2px 2px 7px hsla(154, 100%, 50%, 0.768),
+      -2px -2px 7px hsla(0, 100%, 50%, 0.774),
+      -2px 2px 7px hsla(250, 100%, 50%, 0.5);
+  }
+</style>

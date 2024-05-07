@@ -1,51 +1,77 @@
 ---
 interface Props {
-	title: string;
+  title: string;
 }
 
 const { title } = Astro.props;
+import Image from "astro/components/Image.astro";
+import footerBorder from "../assets/img/footerBorder.svg";
+import Navbar from "../components/Navbar.astro";
+const footer = `url(${footerBorder.src})`;
+const pages: string[] = ["hamba", "damba", "ramba"];
 ---
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Astro description" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <Navbar pages={pages} />
+    <main>
+      <slot />
+    </main>
+    <footer><Image src={footerBorder} alt="" />meow</footer>
+  </body>
 </html>
-<style is:global>
-	:root {
-		--accent: 136, 58, 234;
-		--accent-light: 224, 204, 250;
-		--accent-dark: 49, 10, 101;
-		--accent-gradient: linear-gradient(
-			45deg,
-			rgb(var(--accent)),
-			rgb(var(--accent-light)) 30%,
-			white 60%
-		);
-	}
-	html {
-		font-family: system-ui, sans-serif;
-		background: #13151a;
-		background-size: 224px;
-	}
-	code {
-		font-family:
-			Menlo,
-			Monaco,
-			Lucida Console,
-			Liberation Mono,
-			DejaVu Sans Mono,
-			Bitstream Vera Sans Mono,
-			Courier New,
-			monospace;
-	}
+<style is:global define:vars={{ footer }}>
+  @import url("https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+  article {
+    text-align: justify;
+    word-wrap: break-word;
+  }
+  html {
+    background-color: black;
+    box-sizing: border-box;
+  }
+  h1 {
+    font-family: "Space Mono", monospace;
+    font-size: 3em;
+    color: white;
+    text-align: justify;
+  }
+  body {
+    display: grid;
+    grid-template-rows:
+      [top-start] 7rem [top-end main-start] minmax(calc(100vh - 18rem), 100%)
+      [main-end footer-start] 9rem [footer-end];
+    grid-template-columns:
+      [body-start] 1fr [main-start nav-start] min(95%, 800px)
+      [main-end nav-end] 1fr [body-end];
+    gap: 2rem 0;
+    margin: 0;
+    padding: 0;
+  }
+  main {
+    grid-column: main-start / main-end;
+    grid-row: main-start / main-end;
+    color: white;
+    font-family: "Space Mono", monospace;
+    width: 100%;
+    height: max-content;
+  }
+  footer {
+    grid-row: footer-start / footer-end;
+    grid-column: body-start / body-end;
+    margin: 0;
+    border-image: var(--footer) 20;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+  }
 </style>
