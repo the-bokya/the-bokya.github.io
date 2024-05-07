@@ -1,5 +1,6 @@
 
 ---
+layout: ../../../layouts/Blog.astro
 title: "Trying to See Things"
 date: 2023-11-03
 description: "A note to remind myself to actually see things"

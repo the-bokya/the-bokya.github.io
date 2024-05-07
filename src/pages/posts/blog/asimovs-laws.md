@@ -1,5 +1,6 @@
 
 ---
+layout: ../../../layouts/Blog.astro
 title: "Isaac Asimov's Laws of Robotics (Revised 2023)"
 date: 2023-11-29
 description: "Making the laws relevant to modern times."

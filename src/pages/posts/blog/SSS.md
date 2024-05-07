@@ -1,4 +1,5 @@
 ---
+layout: ../../../layouts/Blog.astro
 title: "Shamir's Secret Sharing"
 date: 2023-09-28
 description: "A legendary technique to divide secrets Hollywood style"

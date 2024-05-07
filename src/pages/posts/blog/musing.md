@@ -1,4 +1,5 @@
 ---
+layout: ../../../layouts/Blog.astro
 title: "Musings"
 date: 2023-08-17
 description: "A dive into my mind"
