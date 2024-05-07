@@ -1,9 +1,9 @@
 
-+++
-title = "Trying to See Things"
-date = 2023-11-03
-description = "A note to remind myself to actually see things"
-+++
+---
+title: "Trying to See Things"
+date: 2023-11-03
+description: "A note to remind myself to actually see things"
+---
 
 It is 2:00 AM as I write this, while laying in bed. I have come to the conclusion that I have looked at most of my life from inside myself.
 

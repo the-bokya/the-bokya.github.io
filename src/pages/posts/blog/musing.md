@@ -1,8 +1,8 @@
-+++
-title = "Musings"
-date = 2023-08-17
-description = "A dive into my mind"
-+++
+---
+title: "Musings"
+date: 2023-08-17
+description: "A dive into my mind"
+---
 
 Hello, let me formally introduce myself: I am Ayush, just one of the trillions of tiny organisms that inhabit this planet. It seemed like my life had no single direction and I'd move here and there (in my mind, _obviously_). So I decided to start **journaling**. They say it helps in organising your thoughts.
 

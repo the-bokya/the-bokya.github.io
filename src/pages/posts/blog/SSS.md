@@ -1,8 +1,8 @@
-+++
-title = "Shamir's Secret Sharing"
-date = 2023-09-28
-description = "A legendary technique to divide secrets Hollywood style"
-+++
+---
+title: "Shamir's Secret Sharing"
+date: 2023-09-28
+description: "A legendary technique to divide secrets Hollywood style"
+---
 
 The title might sound like a spell straight out of Harry Potter ('_Wingardium Leviosa!_'), but trust me it is not! It is a spell from Mathematics!
 
