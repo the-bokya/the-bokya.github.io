@@ -1,11 +1,53 @@
 ---
 import Layout from "./Layout.astro";
 const { frontmatter } = Astro.props;
+const date: Date = new Date(frontmatter.date.toString());
+const day = date.getDay();
+const months = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
+const month = months[date.getMonth()];
+const year = date.getFullYear();
+let daySuffix = "th";
+
+if (day > 3 && day < 21) {
+  daySuffix = "th";
+} else if (day % 10 == 1) {
+  daySuffix = "st";
+} else if (day % 10 == 2) {
+  daySuffix = "nd";
+} else if (day % 10 == 3) {
+  daySuffix = "rd";
+}
 ---
 
 <Layout title={frontmatter.title}>
   <h1>{frontmatter.title}</h1>
+  <p id="date">
+    <strong>Date</strong>: {day}<sup>{daySuffix}</sup>
+    {month}
+    {year}
+  </p>
   <article>
     <slot />
   </article>
 </Layout>
+
+<style>
+  #date {
+    color: rgb(188, 188, 188);
+    font-style: italic;
+    text-align: right;
+  }
+</style>
