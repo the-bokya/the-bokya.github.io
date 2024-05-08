@@ -9,8 +9,56 @@ const { href, title, body } = Astro.props;
 ---
 
 <a href={href}>
-  <div>
-    <h1>{title}</h1>
-    <div>{body}</div>
+  <div class="card">
+    <h2>{title}</h2>
+    <div class="body">{body}</div>
   </div></a
 >
+
+<style>
+  .card {
+    width: 20rem;
+    background-color: white;
+    border-radius: 2rem;
+    position: relative;
+    min-height: 20rem;
+    transition: 0.5s;
+    overflow: hidden;
+    margin: 20px;
+  }
+  .card > h2 {
+    color: black;
+    text-shadow: 0 0 3px rgb(98, 255, 0);
+    height: 100%;
+    top: 0;
+    left: 0;
+    font-size: 1.2em;
+    position: absolute;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    transition: 0.5s;
+  }
+  .card > .body {
+    height: 40%;
+    position: absolute;
+    top: 100%;
+    transition: 0.8s;
+    color: black;
+    text-shadow: none;
+    font-weight: bold;
+    text-align: center;
+    padding: 0;
+    width: 100%;
+  }
+  .card:hover h2 {
+    height: 40%;
+  }
+  .card:hover .body {
+    top: 50%;
+  }
+</style>
