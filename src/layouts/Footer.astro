@@ -1,20 +1,15 @@
 ---
-import footerBorder from "../assets/img/footer.svg";
-const footer = `url(${footerBorder.src})`;
+
 ---
 
 <footer></footer>
-<style define:vars={{ footer }}>
+<style>
   footer {
     grid-row: footer-start / footer-end;
     grid-column: body-start / body-end;
     margin: 0;
-    background-image: var(--footer);
     height: 100%;
     display: flex;
     justify-content: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center bottom;
   }
 </style>

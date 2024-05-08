@@ -11,6 +11,8 @@ const pages: NavLink[] = [
   { title: "Home", link: "/" },
   { title: "Blog", link: "/blogs" },
 ];
+import footerBorder from "../assets/img/footer.svg";
+const footer = `url(${footerBorder.src})`;
 ---
 
 <!doctype html>
@@ -23,7 +25,10 @@ const pages: NavLink[] = [
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
-  <body x-data="{hide_nav: false}" @scroll.window="hide_nav = (window.pageYOffset < 500) ? false : true">
+  <body
+    x-data="{hide_nav: false}"
+    @scroll.window="hide_nav = (window.pageYOffset < 500) ? false : true"
+  >
     <Navbar pages={pages} />
     <main>
       <slot />
@@ -31,7 +36,7 @@ const pages: NavLink[] = [
     <Footer />
   </body>
 </html>
-<style is:global>
+<style is:global define:vars={{ footer }}>
   @import url("https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
   @import url("https://fonts.googleapis.com/css2?family=Sen:wght@400..800&display=swap");
   * {
@@ -66,6 +71,10 @@ const pages: NavLink[] = [
       0px 5px 20px rgba(255, 0, 162, 0.701);
   }
   body {
+    background-image: var(--footer);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center bottom;
     display: grid;
     grid-template-rows:
       [top-start] 7rem [top-end main-start] minmax(calc(100vh - 7rem), 100%)
