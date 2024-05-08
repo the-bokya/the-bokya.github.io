@@ -1,4 +1,3 @@
-
 ---
 layout: ../../../layouts/Blog.astro
 title: "Isaac Asimov's Laws of Robotics (Revised 2023)"
