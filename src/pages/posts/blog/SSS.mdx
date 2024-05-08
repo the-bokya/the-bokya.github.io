@@ -4,7 +4,13 @@ title: "Shamir's Secret Sharing"
 date: 2023-09-28
 description: "A legendary technique to divide secrets Hollywood style"
 ---
-import Katex from "../../../components/Katex.astro"
+import Katex from "../../../components/Katex.astro";
+import Image from "astro/components/Image.astro";
+import img1 from "../../../assets/img/2023-09-26-21-47-53-image.png";
+import img2 from "../../../assets/img/2023-09-26-21-51-36-image.png";
+import img3 from "../../../assets/img/2023-09-26-22-07-20-image.png";
+import img4 from "../../../assets/img/2023-09-26-22-10-56-image.png";
+import img5 from "../../../assets/img/2023-09-26-22-12-35-image.png";
 
 The title might sound like a spell straight out of Harry Potter ('_Wingardium Leviosa!_'), but trust me it is not! It is a spell from Mathematics!
 
@@ -34,13 +40,13 @@ The technique involves passing the number as a constant inside a polynomial with
 
 They produce really awesome shapes depending on their coefficients and degree (the number of <Katex formula = "x" />'s in the equation). Some of the are:
 
-![](/img/2023-09-26-21-47-53-image.png)
+<Image src={img1} alt="" />
 
-![](/img/2023-09-26-21-51-36-image.png "I like to call this the 'mountain'")
+<Image src={img2} alt="I like to call this the 'mountain'" />
 
 They can even be straight lines, where the highest power of <Katex formula = "x" /> is 1
 
-![](/img/2023-09-26-22-07-20-image.png)
+<Image src={img3} alt="I like to call this the 'mountain'" />
 
 "Wait a minute," you might say, and storm away, feeling betrayed thinking that I just lured you into solving a bunch of maths while I promised you cryptography. Well, be patient.
 
@@ -48,11 +54,11 @@ The best thing is that polynomials aren't all about their looks! Adi Shamir foun
 
 You have 2 points:
 
-![](/img/2023-09-26-22-10-56-image.png)
+<Image src={img4} alt=""/>
 
 You can easily draw a line through them:
 
-![](/img/2023-09-26-22-12-35-image.png)
+<Image src={img5} alt=""/>
 
 An important fact about this line is that it is distinct and no other lines can be produced from the given two points. Another fact is that if you have the line, you have the equation as well.
 
