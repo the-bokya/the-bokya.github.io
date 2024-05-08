@@ -3,7 +3,7 @@ import footerBorder from "../assets/img/footer.svg";
 const footer = `url(${footerBorder.src})`;
 ---
 
-<footer>meow</footer>
+<footer></footer>
 <style define:vars={{ footer }}>
   footer {
     grid-row: footer-start / footer-end;
@@ -14,7 +14,7 @@ const footer = `url(${footerBorder.src})`;
     display: flex;
     justify-content: center;
     background-repeat: no-repeat;
-    background-size: contain;
-    background-position: top center;
+    background-size: cover;
+    background-position: center bottom;
   }
 </style>
