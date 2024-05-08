@@ -1,4 +1,3 @@
-
 ---
 layout: ../../../layouts/Blog.astro
 title: "Trying to See Things"

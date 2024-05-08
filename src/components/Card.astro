@@ -16,15 +16,20 @@ const { href, title, body } = Astro.props;
 >
 
 <style>
+  a {
+    display: block;
+    height: 15rem;
+    width: 15rem;
+  }
   .card {
-    width: 20rem;
+    height: 100%;
+    width: 100%;
     background-color: white;
     border-radius: 2rem;
     position: relative;
-    min-height: 20rem;
     transition: 0.5s;
     overflow: hidden;
-    margin: 20px;
+    padding: 2rem;
   }
   .card > h2 {
     color: black;
@@ -42,11 +47,16 @@ const { href, title, body } = Astro.props;
     margin: 0;
     width: 100%;
     transition: 0.5s;
+    font-family: "Sen", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 800;
+    font-style: normal;
   }
   .card > .body {
     height: 40%;
     position: absolute;
     top: 100%;
+    left: 0;
     transition: 0.8s;
     color: black;
     text-shadow: none;

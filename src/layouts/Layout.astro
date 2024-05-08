@@ -33,6 +33,10 @@ const pages: NavLink[] = [
 </html>
 <style is:global>
   @import url("https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+  @import url("https://fonts.googleapis.com/css2?family=Sen:wght@400..800&display=swap");
+  * {
+    box-sizing: border-box;
+  }
   article {
     text-align: justify;
     word-wrap: break-word;
@@ -46,10 +50,13 @@ const pages: NavLink[] = [
   }
   html {
     background-color: black;
-    box-sizing: border-box;
   }
   h1 {
-    font-family: "Space Mono", monospace;
+    font-family: "Sen", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 800;
+    font-style: normal;
+
     font-size: 3em;
     color: white;
     text-align: justify;
