@@ -8,6 +8,7 @@ import Navbar from "../components/Navbar.astro";
 import type NavLink from "./NavProp";
 import Footer from "./Footer.astro";
 import footerBorder from "../assets/img/footer.svg";
+import FavIcon from "./favicon.svg";
 const pages_proto: any[] = [
   { title: "Home", link: "/" },
   { title: "Blog", link: "/blogs/" },
@@ -25,7 +26,7 @@ const footer = `url(${footerBorder.src})`;
     <meta charset="UTF-8" />
     <meta name="description" content="Ayush Chaudhari's blog" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href={FavIcon.src} />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
