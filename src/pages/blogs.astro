@@ -1,10 +1,21 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Card from "../components/Card.astro";
 const blogs: any[] = await Astro.glob("./posts/blog/*");
 ---
 
 <Layout title="Blog Posts">
   <ul>
-    {blogs.map((i) => <li>{i.frontmatter.title}</li>)}
+    {
+      blogs.map((i) => (
+        <li>
+          <Card
+            title={i.frontmatter.title}
+            body={i.frontmatter.description}
+            href={i.url}
+          />
+        </li>
+      ))
+    }
   </ul>
 </Layout>
