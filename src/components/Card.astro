@@ -50,10 +50,10 @@ const { href, title, body } = Astro.props;
   .card > h2 {
     color: rgb(255, 255, 255);
     height: 100%;
-    top: 0;
-    left: 0;
     font-size: 1.2em;
     position: absolute;
+    top: 0;
+    left: 0;
     text-align: center;
     display: flex;
     justify-content: center;
@@ -69,30 +69,32 @@ const { href, title, body } = Astro.props;
     font-optical-sizing: auto;
     font-weight: 800;
     font-style: normal;
+    transform: translate(0, 0);
   }
   .card > .body {
-    height: 40%;
+    height: 100%;
     position: absolute;
     top: 100%;
     left: 0;
-    transition:
-      0.8s;
-    color: black;
+    transition: 0.8s, color 0s;
+    color: rgba(255, 255, 255, 0.355);
     text-shadow: none;
     font-weight: bold;
     text-align: center;
     padding: 1rem;
     width: 100%;
     font-size: 0.8em;
+    opacity: 0;
   }
   .card:hover h2 {
-    height: 40%;
     color: rgba(255, 255, 255, var(--td));
     text-shadow: none;
+    transform: translate(0, -20%);
   }
   .card:hover .body {
-    top: 50%;
     color: rgba(255, 255, 255, var(--dd));
+    transform: translate(0, -50%);
+    opacity: 1;
   }
   .card:hover {
     box-shadow: 0 6px 5px rgba(255, 255, 255, 0.2);
