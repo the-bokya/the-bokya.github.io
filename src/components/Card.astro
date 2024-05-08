@@ -62,7 +62,7 @@ const { href, title, body } = Astro.props;
     margin: 0;
     width: 100%;
     transition:
-      0.5s,
+      0.5s cubic-bezier(0.75, 0.77, 0, 1.15),
       text-shadow 0.2s,
       color 0s;
     font-family: "Sen", sans-serif;
@@ -76,7 +76,9 @@ const { href, title, body } = Astro.props;
     position: absolute;
     top: 100%;
     left: 0;
-    transition: 0.8s, color 0s;
+    transition:
+      0.7s cubic-bezier(0.46, 0.95, 0, 0.99),
+      color 0s;
     color: rgba(255, 255, 255, 0.355);
     text-shadow: none;
     font-weight: bold;
