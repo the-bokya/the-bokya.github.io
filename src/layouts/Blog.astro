@@ -1,8 +1,8 @@
 ---
 import Layout from "./Layout.astro";
 const { frontmatter } = Astro.props;
-const date: Date = new Date(frontmatter.date.toString());
-const day = date.getDay();
+const date: Date = new Date(frontmatter.date.toString().slice(0, 10));
+const day = date.getDate();
 const months = [
   "January",
   "February",
