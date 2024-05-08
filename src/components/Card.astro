@@ -15,7 +15,7 @@ const { href, title, body } = Astro.props;
     @pointerenter="$el.style.setProperty('--opacity', '0.2')"
     @pointerleave="$el.style.setProperty('--opacity', '0')"
     @pointermove="rect = $el.getBoundingClientRect(); [mouse_x, mouse_y] = [$event.clientX - rect.left, $event.clientY - rect.top]"
-    x-effect="$el.style.setProperty('--x', `${mouse_x}px`); $el.style.setProperty('--y', `${mouse_y}px`); $el.style.setProperty('--td', `${100/Math.max(mouse_y, 0)}`); $el.style.setProperty('--dd', `${Math.max(mouse_y/300, 0.25)}`)"
+    x-effect="$el.style.setProperty('--x', `${mouse_x}px`); $el.style.setProperty('--y', `${mouse_y}px`); $el.style.setProperty('--td', `${100/Math.max(mouse_y, 0.001)}`); $el.style.setProperty('--dd', `${Math.max(mouse_y/300, 0.25)}`)"
   >
     <h2>{title}</h2>
     <div class="body">{body}</div>
