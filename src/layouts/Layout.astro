@@ -23,7 +23,7 @@ const pages: NavLink[] = [
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
-  <body>
+  <body x-data="{hide_nav: false}" @scroll.window="hide_nav = (window.pageYOffset < 500) ? false : true">
     <Navbar pages={pages} />
     <main>
       <slot />

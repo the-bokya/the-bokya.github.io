@@ -6,7 +6,7 @@ interface Props {
 const { pages } = Astro.props;
 ---
 
-<nav>
+<nav :class="hide_nav && 'left'">
   <ul>
     {
       pages.map((i) => (
@@ -40,6 +40,13 @@ const { pages } = Astro.props;
     font-family: "Space Mono", monospace;
     backdrop-filter: blur(10px);
     z-index: 10;
+    transition: 0.5s;
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+  .left {
+    transform: translate(0, -100px);
+    opacity: 0;
   }
   nav ul {
     padding: 0;
