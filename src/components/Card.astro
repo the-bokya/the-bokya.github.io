@@ -23,16 +23,14 @@ const { href, title, body } = Astro.props;
 >
 
 <style>
-  :root {
-    --dd: 0;
-    --td: 0;
-  }
   a {
     display: block;
     height: 15rem;
     width: 15rem;
   }
   .card {
+    --td: 0;
+    --dd: 0;
     height: 100%;
     width: 100%;
     border-radius: 2rem;
@@ -63,7 +61,10 @@ const { href, title, body } = Astro.props;
     padding: 2rem;
     margin: 0;
     width: 100%;
-    transition: 0.5s, text-shadow 0.2s, color 0s;
+    transition:
+      0.5s,
+      text-shadow 0.2s,
+      color 0s;
     font-family: "Sen", sans-serif;
     font-optical-sizing: auto;
     font-weight: 800;
@@ -74,7 +75,9 @@ const { href, title, body } = Astro.props;
     position: absolute;
     top: 100%;
     left: 0;
-    transition: 0.8s, color 0s;
+    transition:
+      0.8s,
+      color 0s;
     color: black;
     text-shadow: none;
     font-weight: bold;
