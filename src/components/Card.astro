@@ -15,7 +15,7 @@ const { href, title, body } = Astro.props;
     @pointerenter="$el.style.setProperty('--opacity', '0.2')"
     @pointerleave="$el.style.setProperty('--opacity', '0')"
     @pointermove="rect = $el.getBoundingClientRect(); [mouse_x, mouse_y] = [$event.clientX - rect.left, $event.clientY - rect.top]"
-    x-effect="$el.style.setProperty('--x', `${mouse_x}px`); $el.style.setProperty('--y', `${mouse_y}px`); $el.style.setProperty('--td', `${1 - mouse_y/300}`)"
+    x-effect="$el.style.setProperty('--x', `${mouse_x}px`); $el.style.setProperty('--y', `${mouse_y}px`); $el.style.setProperty('--td', `${100/Math.max(mouse_y, 0)}`); $el.style.setProperty('--dd', `${Math.max(mouse_y/300, 0.25)}`)"
   >
     <h2>{title}</h2>
     <div class="body">{body}</div>
@@ -23,6 +23,10 @@ const { href, title, body } = Astro.props;
 >
 
 <style>
+  :root {
+    --dd: 0;
+    --td: 0;
+  }
   a {
     display: block;
     height: 15rem;
@@ -42,7 +46,7 @@ const { href, title, body } = Astro.props;
       rgba(148, 148, 148, var(--opacity)),
       rgb(0, 0, 0, 1)
     );
-    border: 2px solid rgb(42, 151, 163);
+    border: 2px solid rgb(89, 89, 89);
   }
   .card > h2 {
     color: rgb(255, 255, 255);
@@ -69,13 +73,14 @@ const { href, title, body } = Astro.props;
     position: absolute;
     top: 100%;
     left: 0;
-    transition: 0.8s;
+    transition: 0.8s, color 0s;
     color: black;
     text-shadow: none;
     font-weight: bold;
     text-align: center;
     padding: 1rem;
     width: 100%;
+    font-size: 0.8em;
   }
   .card:hover h2 {
     height: 40%;
@@ -84,9 +89,10 @@ const { href, title, body } = Astro.props;
   }
   .card:hover .body {
     top: 50%;
+    color: rgba(255, 255, 255, var(--dd));
   }
   .card:hover {
-    box-shadow: 0 10px 20px rgba(55, 15, 166, 0.6);
-    border: 2px solid rgb(89, 89, 89);
+    box-shadow: 0 6px 5px rgba(255, 255, 255, 0.2);
+    border: 2px solid rgb(42, 151, 163);
   }
 </style>
