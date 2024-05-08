@@ -8,7 +8,7 @@ const { formula } = Astro.props;
 const output: string = katex.renderToString(formula, { throwOnError: false });
 ---
 
-<div><span set:html={output} /></div>
+<span set:html={output} />
 <link
   rel="stylesheet"
   href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css"

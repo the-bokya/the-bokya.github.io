@@ -1,9 +1,10 @@
 ---
-layout: ../../../layouts/Blog.astro
+layout: '../../../layouts/Blog.astro'
 title: "Shamir's Secret Sharing"
 date: 2023-09-28
 description: "A legendary technique to divide secrets Hollywood style"
 ---
+import Katex from "../../../components/Katex.astro"
 
 The title might sound like a spell straight out of Harry Potter ('_Wingardium Leviosa!_'), but trust me it is not! It is a spell from Mathematics!
 
@@ -23,21 +24,21 @@ Now, as a student of game theory, you know that your peers cannot be trusted and
 
 To preserve this number, you decide to use Shamir's method. You once read it in Adi Shamir's paper 'How to Share a Secret' and have been dying to implement it ever since.
 
-Now, you can share the secret amongst $5$ scientists and you won't be able to retrieve the number unless you have a number of scientists above a threshold consenting to unlock it. The secret number will be available only when atleast $3$ scientists put in their keys and rotate them.
+Now, you can share the secret amongst <Katex formula="5" /> scientists and you won't be able to retrieve the number unless you have a number of scientists above a threshold consenting to unlock it. The secret number will be available only when atleast <Katex formula="3" /> scientists put in their keys and rotate them.
 
 This is called a threshold scheme.
 
-The technique involves passing the number as a constant inside a polynomial with random coefficients. If you have forgotten, a polynomial is an equation with a bunch of $x$'s with increasing powers starting from one and attached to a number. Remember those quadratic equations with their elusive roots, those were polynomials! Polynomials are generally something like this:
+The technique involves passing the number as a constant inside a polynomial with random coefficients. If you have forgotten, a polynomial is an equation with a bunch of <Katex formula = "x" />'s with increasing powers starting from one and attached to a number. Remember those quadratic equations with their elusive roots, those were polynomials! Polynomials are generally something like this:
 
-$f(x) = constant + ax + bx^2 + cx^3 ... wx^n$
+<Katex formula = "f(x) = constant + ax + bx^2 + cx^3 ... wx^n" />
 
-They produce really awesome shapes depending on their coefficients and degree (the number of $x$'s in the equation). Some of the are:
+They produce really awesome shapes depending on their coefficients and degree (the number of <Katex formula = "x" />'s in the equation). Some of the are:
 
 ![](/img/2023-09-26-21-47-53-image.png)
 
 ![](/img/2023-09-26-21-51-36-image.png "I like to call this the 'mountain'")
 
-They can even be straight lines, where the highest power of $x$ is 1
+They can even be straight lines, where the highest power of <Katex formula = "x" /> is 1
 
 ![](/img/2023-09-26-22-07-20-image.png)
 
@@ -55,9 +56,9 @@ You can easily draw a line through them:
 
 An important fact about this line is that it is distinct and no other lines can be produced from the given two points. Another fact is that if you have the line, you have the equation as well.
 
-The same applies to polynomials of higher degrees. If you have $3$ points, you can draw a quadratic curve that passes through them. And those $3$ poins will always give you the same quadratic curve. In general, you can reconstruct an polynomial of $n$ degree if there are $n+1$ _distinct_ points. Remember drawing curves for statistics in school when you would draw the points extra large so as to make the curves pass through them?
+The same applies to polynomials of higher degrees. If you have <Katex formula = "3" /> points, you can draw a quadratic curve that passes through them. And those <Katex formula = "3" /> poins will always give you the same quadratic curve. In general, you can reconstruct an polynomial of <Katex formula = "n" /> degree if there are <Katex formula = "n+1" /> _distinct_ points. Remember drawing curves for statistics in school when you would draw the points extra large so as to make the curves pass through them?
 
-One more thing to note here is that you cannot reconstruct a _distinct_ equation if you have less than $n+1$ points. You could draw all sorts of crazy shapes intersecting only two points, but none of them are distinct. You get an infinite number of quadratic equations passing through $2$ points, but there's only one quadratic equation passing through $3$ points.
+One more thing to note here is that you cannot reconstruct a _distinct_ equation if you have less than <Katex formula = "n+1" /> points. You could draw all sorts of crazy shapes intersecting only two points, but none of them are distinct. You get an infinite number of quadratic equations passing through <Katex formula = "2" /> points, but there's only one quadratic equation passing through <Katex formula = "3" /> points.
 
 Now, the fun begins!
 
@@ -66,52 +67,52 @@ Now, the fun begins!
 1. The first part of the process is
 
    - Hold the secret number firmly in your hand
-   - Sneak it into the equation. You'll know exactly why we are putting this number where we are in the equation when we reconstruct the secret. We are gonna divide the secret amongst the scientists. We will use a quadratic equation so that the minimum points (and thus scientists) need to retrieve the equation are $3$ as quadratic equations are of the degree $2$ and thus atleast $2+1$ points are needed to reconstruct the equation. Write the following equation down:
+   - Sneak it into the equation. You'll know exactly why we are putting this number where we are in the equation when we reconstruct the secret. We are gonna divide the secret amongst the scientists. We will use a quadratic equation so that the minimum points (and thus scientists) need to retrieve the equation are <Katex formula = "3" /> as quadratic equations are of the degree <Katex formula = "2" /> and thus atleast <Katex formula = "2+1" /> points are needed to reconstruct the equation. Write the following equation down:
 
-     $y = secret + ax + bx^2$
+     <Katex formula = "y = secret + ax + bx^2" />
 
-     Here, $a$ and $b$ are completely random numbers. You will forget they ever existed after the first part of the process is done. Then you will have to reconstruct them in the second part. Randomness helps us in evading guesses.
+     Here, <Katex formula = "a" /> and <Katex formula = "b" /> are completely random numbers. You will forget they ever existed after the first part of the process is done. Then you will have to reconstruct them in the second part. Randomness helps us in evading guesses.
 
-   - We will assign $x$ as $1$ through $5$ for each scientist and enter the $x$ into the equation. Each scientist will get their own $y$ to make a sticker of and put on their laptop!
-   - They have to preserve their pairs of $x$'s and $y$'s, called shares, if they ever want to retrieve the number.
-   - Done! That's all it takes to divide a secret! Now, unless atleast $3$ of the $5$ scientists are willing to retrieve the secret, say bye-bye to your vacations!
+   - We will assign <Katex formula = "x" /> as <Katex formula = "1" /> through <Katex formula = "5" /> for each scientist and enter the <Katex formula = "x" /> into the equation. Each scientist will get their own <Katex formula = "y" /> to make a sticker of and put on their laptop!
+   - They have to preserve their pairs of <Katex formula = "x" />'s and <Katex formula = "y" />'s, called shares, if they ever want to retrieve the number.
+   - Done! That's all it takes to divide a secret! Now, unless atleast <Katex formula = "3" /> of the <Katex formula = "5" /> scientists are willing to retrieve the secret, say bye-bye to your vacations!
 
 2. Your boss is overworking your entire team and all of you agree that something needs to be done about it. You take the lead.
 
-   - Gather $3$ or more scientists (the more the merrier).
+   - Gather <Katex formula = "3" /> or more scientists (the more the merrier).
    - Take them to your ultra-safe safe where you kept the secret.
    - List the things that you know:
 
      1. The equation we used for the encryption was quadratic
-     2. The keys (the $x$'s and $y$'s) you gave the scientists can be used to reconstruct the equation
+     2. The keys (the <Katex formula = "x" />'s and <Katex formula = "y" />'s) you gave the scientists can be used to reconstruct the equation
 
-   - Now, you have all the points, but you never gave a thought to the exact method of reconstructing the secret. You just intuitively knew what was gonna happen! Luckily, you have a scientist, who is a mathematician by night and who points you towards Lagrange's formula. Lagrange was this 18<sup>th</sup> century dude who made this incredible method that solves the exact problem we are facing. It takes in a bunch of points, and, for each point, it creates this monstrosity: $L_i(x) = \frac{(x - x_0)(x - x_1) \cdots (x - x_{i-1})(x - x_{i+1}) \cdots (x - x_n)}{(x_i - x_0)(x_i - x_1) \cdots (x_i - x_{i-1})(x_i - x_{i+1}) \cdots (x_i - x_n)}$
+   - Now, you have all the points, but you never gave a thought to the exact method of reconstructing the secret. You just intuitively knew what was gonna happen! Luckily, you have a scientist, who is a mathematician by night and who points you towards Lagrange's formula. Lagrange was this 18<sup>th</sup> century dude who made this incredible method that solves the exact problem we are facing. It takes in a bunch of points, and, for each point, it creates this monstrosity: <Katex formula = "L_i(x) = \frac{(x - x_0)(x - x_1) \cdots (x - x_{i-1})(x - x_{i+1}) \cdots (x - x_n)}{(x_i - x_0)(x_i - x_1) \cdots (x_i - x_{i-1})(x_i - x_{i+1}) \cdots (x_i - x_n)}" />
 
-     $L_i(x)$ is a term here for each of the points and $x_i$ is the point x-coordinate of the point we are using and all the other $x_{whatever}$ are the other points. We then multiply these $L_i(x)$'s with their respective $y_i$'s and add them up! This gives us a function $P(x)$.
+     <Katex formula = "L_i(x)" /> is a term here for each of the points and <Katex formula = "x_i" /> is the point x-coordinate of the point we are using and all the other <Katex formula = "x_{whatever}" /> are the other points. We then multiply these <Katex formula = "L_i(x)" />'s with their respective <Katex formula = "y_i" />'s and add them up! This gives us a function <Katex formula = "P(x)" />.
 
-     $P(x) = \sum_{i=0}^{n} y_i \cdot L_i(x)$
+     <Katex formula = "P(x) = \sum_{i=0}^{n} y_i \cdot L_i(x)" />
 
      Believe it or not, P(x) is our original function! The one we had to bid farewell to when we were done sharing our secrets. It's been so long!
 
    - We still don't know how to reconstruct the secret. Let's go back to the function's original form:
 
-     $y = secret + ax + bx^2$
+     <Katex formula = "y = secret + ax + bx^2" />
 
      Through our rebellious shenanigans, we know that:
 
-     $P(x) = secret + ax + bx^2$
+     <Katex formula = "P(x) = secret + ax + bx^2" />
 
-     You can now give any $x$ to $P(x)$ and it will bounce happily and give you some number. But, we are looking at a really specific (and special) $x$ here. Close your eyes and think (open them if you forget the equation). Think. Think. Think!
+     You can now give any <Katex formula = "x" /> to <Katex formula = "P(x)" /> and it will bounce happily and give you some number. But, we are looking at a really specific (and special) <Katex formula = "x" /> here. Close your eyes and think (open them if you forget the equation). Think. Think. Think!
 
-     Yep! You bright little kiddo! The special $x$ is $0$, the secret ingredient of our secret recipe!
+     Yep! You bright little kiddo! The special <Katex formula = "x" /> is <Katex formula = "0" />, the secret ingredient of our secret recipe!
 
-     $P(0) = secret + a\cdot0+b\cdot0^2$
+     <Katex formula = "P(0) = secret + a\cdot0+b\cdot0^2" />
 
      Thus:
 
-     $P(0) = secret$
+     <Katex formula = "P(0) = secret" />
 
-   - $LHS = RHS$
+   - <Katex formula = "LHS = RHS" />
 
      Yep! You got your secret back and are on your way to Lonavala!
 
