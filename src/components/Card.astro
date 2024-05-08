@@ -9,7 +9,14 @@ const { href, title, body } = Astro.props;
 ---
 
 <a href={href}>
-  <div class="card">
+  <div
+    class="card"
+    x-data="{mouse_x: 0, mouse_y: 0}"
+    @pointerenter="$el.style.setProperty('--opacity', '0.2')"
+    @pointerleave="$el.style.setProperty('--opacity', '0')"
+    @pointermove="rect = $el.getBoundingClientRect(); [mouse_x, mouse_y] = [$event.clientX - rect.left, $event.clientY - rect.top]"
+    x-effect="$el.style.setProperty('--x', `${mouse_x}px`); $el.style.setProperty('--y', `${mouse_y}px`); $el.style.setProperty('--td', `${1 - mouse_y/300}`)"
+  >
     <h2>{title}</h2>
     <div class="body">{body}</div>
   </div></a
@@ -24,16 +31,21 @@ const { href, title, body } = Astro.props;
   .card {
     height: 100%;
     width: 100%;
-    background-color: white;
     border-radius: 2rem;
     position: relative;
     transition: 0.5s;
     overflow: hidden;
     padding: 2rem;
+    background-color: rgb(0, 0, 0);
+    background: radial-gradient(
+      at var(--x) var(--y),
+      rgba(148, 148, 148, var(--opacity)),
+      rgb(0, 0, 0, 1)
+    );
+    border: 2px solid rgb(42, 151, 163);
   }
   .card > h2 {
-    color: black;
-    text-shadow: 0 0 3px rgb(98, 255, 0);
+    color: rgb(255, 255, 255);
     height: 100%;
     top: 0;
     left: 0;
@@ -43,10 +55,10 @@ const { href, title, body } = Astro.props;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0;
+    padding: 2rem;
     margin: 0;
     width: 100%;
-    transition: 0.5s;
+    transition: 0.5s, text-shadow 0.2s, color 0s;
     font-family: "Sen", sans-serif;
     font-optical-sizing: auto;
     font-weight: 800;
@@ -62,13 +74,19 @@ const { href, title, body } = Astro.props;
     text-shadow: none;
     font-weight: bold;
     text-align: center;
-    padding: 0;
+    padding: 1rem;
     width: 100%;
   }
   .card:hover h2 {
     height: 40%;
+    color: rgba(255, 255, 255, var(--td));
+    text-shadow: none;
   }
   .card:hover .body {
     top: 50%;
+  }
+  .card:hover {
+    box-shadow: 0 10px 20px rgba(55, 15, 166, 0.6);
+    border: 2px solid rgb(89, 89, 89);
   }
 </style>
