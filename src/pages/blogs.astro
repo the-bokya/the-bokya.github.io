@@ -2,16 +2,9 @@
 import Layout from "../layouts/Layout.astro";
 import Card from "../components/Card.astro";
 const blogs: any[] = await Astro.glob("./posts/blog/*");
-blogs.sort((a, b) => {
-  const date_a = new Date(a.date);
-  const date_b = new Date(b.date);
-  if (date_a > date_b) {
-    return 1;
-  } else {
-    return -1;
-  }
-  return 0;
-});
+blogs.sort(
+  (a, b) => Date.parse(b.frontmatter.date) - Date.parse(a.frontmatter.date)
+);
 ---
 
 <Layout title="Blog Posts">
