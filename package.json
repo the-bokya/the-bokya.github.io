@@ -13,6 +13,7 @@
     "@astrojs/alpinejs": "^0.4.0",
     "@astrojs/check": "^0.6.0",
     "@astrojs/mdx": "^3.0.0",
+    "@fontsource-variable/jetbrains-mono": "^5.0.21",
     "@fontsource-variable/sen": "^5.0.5",
     "@fontsource/space-mono": "^5.0.20",
     "@types/alpinejs": "^3.13.10",
