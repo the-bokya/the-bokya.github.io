@@ -13,6 +13,7 @@ import "@fontsource/space-mono/400.css";
 import "@fontsource/space-mono/700.css";
 import "@fontsource-variable/sen";
 import "@fontsource-variable/jetbrains-mono";
+import "@fontsource-variable/space-grotesk";
 const pages_proto: any[] = [
   { title: "Home", link: "/" },
   { title: "Blog", link: "/blogs/" },
@@ -58,6 +59,7 @@ const footer = `url(${footerBorder.src})`;
     article {
       text-align: justify;
       word-wrap: break-word;
+      hyphens: auto;
     }
     main a {
       text-decoration: none;
@@ -79,6 +81,17 @@ const footer = `url(${footerBorder.src})`;
       color: white;
       text-align: justify;
       text-shadow: var(--cool-shadow);
+      margin: 0 0 4rem 0;
+    }
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-weight: 583;
+      font-size: 1.4em;
+      color: rgb(227, 227, 227);
+      text-shadow: var(--cool-shadow);
     }
     body {
       background-image: var(--footer);
@@ -99,10 +112,13 @@ const footer = `url(${footerBorder.src})`;
     main {
       grid-column: main-start / main-end;
       grid-row: main-start / main-end;
-      color: white;
-      font-family: "Space Mono", monospace;
+      color: rgb(169, 169, 169);
+      font-family: "Space Grotesk Variable", sans-serif;
       width: 100%;
       height: max-content;
+    }
+    main p {
+      margin: 0.5em;
     }
     main img {
       width: 80%;
