@@ -11,8 +11,8 @@
   },
   "dependencies": {
     "@astrojs/alpinejs": "^0.4.0",
-    "@astrojs/check": "^0.6.0",
-    "@astrojs/mdx": "^3.0.0",
+    "@astrojs/check": "^0.7.0",
+    "@astrojs/mdx": "^3.0.1",
     "@fontsource-variable/jetbrains-mono": "^5.0.21",
     "@fontsource-variable/sen": "^5.0.5",
     "@fontsource-variable/space-grotesk": "^5.0.18",
@@ -20,7 +20,7 @@
     "@types/alpinejs": "^3.13.10",
     "@types/katex": "^0.16.7",
     "alpinejs": "^3.13.10",
-    "astro": "^4.8.2",
+    "astro": "^4.9.2",
     "katex": "^0.16.10",
     "typescript": "^5.4.5"
   }
