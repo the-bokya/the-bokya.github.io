@@ -1,0 +1,87 @@
+---
+layout: '../../../layouts/Blog.astro'
+title: "Pi Using Random Numbers"
+date: 2024-10-30
+description: "A silly method, actually."
+---
+import Katex from "../../../components/Katex.astro";
+import Image from "astro/components/Image.astro";
+import Img1 from "../../../assets/img/circle-in-square.png"
+
+Lying in my bed, my mind wandered off to a far gentler era of far lesser worries and far better sleep schedules and consequently to the probability problems we used to solve in those times as kids. One of the problems would go like this:
+
+*"Given a square of side <Katex formula="S" />, with a circle of radius <Katex formula="R = S/2" /> fitted inside, calculate the probability of a ball falling inside the circle."*
+
+It would have an accompanying image:
+
+<Image src={Img1} alt=""/>
+<caption>*Like an idiot, I didn't save my diagrams.net project and, obviously, the tab had to crash, so you'll have to make do with this image. It's not that bad tbh*</caption>
+
+This question was fascinating to my 14-year-old brain; it combined two very unrelated (to me then) topics of areas and probability. The answer itself is quite simple, you just divide the area of the circle (the part where the should fall) with the area of the square (the universe).
+
+Those were simpler times. The times have changed even though I am the same. The only difference is that I can use calculators now, and, even better, computers!
+
+Let me introduce you to a (really silly) method of calculating the value of <Katex formula="\pi" /> using simulations. You need to forget all the <Katex formula="3.14" />'s and <Katex formula="\frac{22}{7}" />'s you have gathered in your memory over the years for a sec. Here goes:
+
+## Step 1
+Keep on throwing balls at the ground. Ground here refers to the area enclosed by the square.
+
+## Step 2
+After you have thrown a million balls or so (you just got paid, so you can buy a million and a few more), divide the number of balls inside the circle with the total number of balls. *Assumption: 1) The balls stick to the ground and don't bounce, and 2) each ball has equal probability of landing anywhere on the ground (the square).*
+
+<Katex formula="\text{Probability} = \frac{\text{the number of balls inside the circle}}{\text{the total number of balls}}" />
+
+## Step 3
+Standing on the shoulders of the Indian, Egyptian, Greek, Roman, Chinese, Arabic and Mesopotamians who smashed their heads onto rocks for millennia looking for answers, we get: <Katex formula="\text{Probability} = \frac{\pi \cdot r^2}{s^2}" />
+
+Substituting <Katex formula="s = 2 \cdot r" />, we get: <Katex formula="\text{Probability} = \frac{\pi \cdot r^2}{4 \cdot r^2} = \frac{\pi}{4}" />
+
+Fabulous!
+
+combining these two (remember that <Katex formula="\pi" /> is the unknown here, we know everything else):
+<Katex formula="\pi = \frac{\text{number of balls inside the circle}}{\text{total number of balls}} \cdot 4" />
+
+Stunning, right? Now let's take this knowledge for a test drive:
+``` python
+import random
+
+# the side of the square
+s = 10
+
+# the radius of the circle
+r = s/2
+
+in_circle = 0
+total = 1000000
+
+# scale the range of the random value from [0, 1] to [-r, r]
+map_to_canvas = lambda x: x * s - r
+
+for _ in range(total):
+    
+    # random coordinates (dw, they lie inside the square)
+    x, y = [map_to_canvas(random.random()) for _ in range(2)]
+    
+    # all the balls that fall inside the radius r
+    if r**2 >= x**2 + y ** 2:
+        in_circle += 1
+
+pi = (in_circle / total) * 4
+print(pi)
+```
+
+This gives pi correct up to 2 decimal places (3 if you are lucky; 1 if you aren't).
+
+Some of my outputs upon repeated execution:
+- 3.14374
+- 3.142688
+- 3.138964
+- 3.141524 (woahhh!)
+- 3.14446
+- 3.139472
+
+
+
+***Note 1**: I vaguely remember there being a box in the textbook encouraging the reader to try doing this manually using a paper and a coi—shoot! The original problem used a coin instead of a ball! Screw my memory!*
+
+***Note 2**: We could have used equally spaced points instead of random coordinates, but where's the fun in that?*
