@@ -1,7 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Card from "../components/Card.astro";
-const blogs: any[] = await Astro.glob("./posts/blog/*");
+const blogs: any[] = Object.values(import.meta.glob('./posts/blog/*', { eager: true }));
 blogs.sort(
   (a, b) => Date.parse(b.frontmatter.date) - Date.parse(a.frontmatter.date)
 );
