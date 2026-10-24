@@ -5,5 +5,7 @@ import mdx from "@astrojs/mdx";
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [alpinejs(), mdx()]
+  // Preserve spaces between inline elements after Astro 7's default changed.
+  compressHTML: true,
+  integrations: [alpinejs({ entrypoint: "/src/alpine.ts" }), mdx()]
 });

@@ -7,8 +7,8 @@ const { title } = Astro.props;
 import Navbar from "../components/Navbar.astro";
 import type NavLink from "./NavProp";
 import Footer from "./Footer.astro";
-import footerBorder from "../assets/img/footer.svg";
-import FavIcon from "./favicon.svg";
+import footerBorder from "../assets/img/footer.svg?url";
+import FavIcon from "./favicon.svg?url";
 import "@fontsource-variable/sen";
 import "@fontsource-variable/jetbrains-mono";
 import "@fontsource-variable/space-grotesk";
@@ -20,7 +20,7 @@ const pages: NavLink[] = pages_proto.map((i) => {
   i.selected = Astro.url.pathname == i.link;
   return i;
 });
-const footer = `url(${footerBorder.src})`;
+const footer = `url(${footerBorder})`;
 ---
 
 <!doctype html>
@@ -29,12 +29,8 @@ const footer = `url(${footerBorder.src})`;
     <meta charset="UTF-8" />
     <meta name="description" content="Ayush Chaudhari's blog" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href={FavIcon.src} />
+    <link rel="icon" type="image/svg+xml" href={FavIcon} />
     <meta name="generator" content={Astro.generator} />
-    <script
-      defer
-      src="https://cdn.jsdelivr.net/npm/@alpinejs/intersect@3.x.x/dist/cdn.min.js"
-    ></script>
     <title>{title}</title>
   </head>
   <body
